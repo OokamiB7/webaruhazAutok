@@ -15,16 +15,16 @@
     </DbDiagramOptions>
     <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PageOptions">
       <TopLeftMargins>
-        <Width>39.3700787401575 in/100</Width>
-        <Height>39.3700787401575 in/100</Height>
+        <Width>10 mm</Width>
+        <Height>10 mm</Height>
       </TopLeftMargins>
       <BottomRightMargins>
-        <Width>39.3700787401575 in/100</Width>
-        <Height>39.3700787401575 in/100</Height>
+        <Width>10 mm</Width>
+        <Height>10 mm</Height>
       </BottomRightMargins>
       <PaperSize>
-        <Width>827 in/100</Width>
-        <Height>1169 in/100</Height>
+        <Width>210 mm</Width>
+        <Height>297 mm</Height>
       </PaperSize>
     </Options>
     <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PrintOptions" />
@@ -41,7 +41,7 @@
   </VirtualRelations>
   <Diagram Version="1.22.1.0">
     <DiagramModel>
-      <Model xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DDRootModel">
+      <Model xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RootModel">
         <CustomProperties>
           <OID>0</OID>
         </CustomProperties>
@@ -52,11 +52,11 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>-30 px</X>
-              <Y>10 px</Y>
+              <X>-10 px</X>
+              <Y>-280 px</Y>
             </Location>
             <Size>
-              <Width>171 px</Width>
+              <Width>131 px</Width>
               <Height>144 px</Height>
             </Size>
             <DbOid>
@@ -75,11 +75,11 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>300 px</X>
+              <X>-10 px</X>
               <Y>-90 px</Y>
             </Location>
             <Size>
-              <Width>163 px</Width>
+              <Width>192 px</Width>
               <Height>127 px</Height>
             </Size>
             <DbOid>
@@ -98,12 +98,12 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>290 px</X>
-              <Y>110 px</Y>
+              <X>-320 px</X>
+              <Y>-180 px</Y>
             </Location>
             <Size>
-              <Width>168 px</Width>
-              <Height>110 px</Height>
+              <Width>172 px</Width>
+              <Height>195 px</Height>
             </Size>
             <DbOid>
               <Path>carparts.users</Path>
@@ -128,11 +128,11 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>163 px</X>
-                  <Y>56 px</Y>
+                  <X>6 px</X>
+                  <Y>58 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>6</OID>
                   <PortType>FixedAnchor</PortType>
@@ -140,11 +140,11 @@
               </Port>
               <Port>
                 <Location>
-                  <X>5 px</X>
-                  <Y>36 px</Y>
+                  <X>165 px</X>
+                  <Y>38 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>7</OID>
                   <PortType>FixedAnchor</PortType>
@@ -153,12 +153,12 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>201 px</X>
-                <Y>66 px</Y>
+                <X>-30 px</X>
+                <Y>-222 px</Y>
               </PointD>
               <PointD>
-                <X>201 px</X>
-                <Y>146 px</Y>
+                <X>-30 px</X>
+                <Y>-142 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -177,11 +177,11 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-60 px</X>
-                  <Y>-40 px</Y>
+                  <X>79 px</X>
+                  <Y>-80 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>8</OID>
                   <PortType>FixedAnchor</PortType>
@@ -207,8 +207,8 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>168 px</X>
-                  <Y>73 px</Y>
+                  <X>119 px</X>
+                  <Y>74 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -219,11 +219,11 @@
               </Port>
               <Port>
                 <Location>
-                  <X>7 px</X>
-                  <Y>29 px</Y>
+                  <X>184 px</X>
+                  <Y>39 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>12</OID>
                   <PortType>FixedAnchor</PortType>
@@ -232,12 +232,12 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>161 px</X>
-                <Y>83 px</Y>
+                <X>201 px</X>
+                <Y>-206 px</Y>
               </PointD>
               <PointD>
-                <X>161 px</X>
-                <Y>-61 px</Y>
+                <X>201 px</X>
+                <Y>-51 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -256,8 +256,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-20 px</X>
-                  <Y>72 px</Y>
+                  <X>-80 px</X>
+                  <Y>-77.5 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -278,8 +278,8 @@
           <ScaleMode>Free</ScaleMode>
           <Scale>1</Scale>
           <Location>
-            <X>-522 px</X>
-            <Y>-336.5 px</Y>
+            <X>-823 px</X>
+            <Y>-402 px</Y>
           </Location>
         </ViewPort>
       </Model>
