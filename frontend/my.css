@@ -1,0 +1,22 @@
+body{
+    background-color: beige;
+}
+
+.my-container{
+    border: 1px, dashed, black;
+    background-color: grey
+}
+
+h1{
+    text-align: center;
+    background-color: aquamarine;
+}
+
+.loginBox{
+    max-width: 500px;
+    background-color: wheat;
+}
+
+/* .card-body{
+    
+} */
