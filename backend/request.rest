@@ -184,6 +184,6 @@ Content-Type: application/json
 
 get http://localhost:3000/products
 
-### get products
+### get users
 
 get http://localhost:3000/users

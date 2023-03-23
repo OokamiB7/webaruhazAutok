@@ -42,6 +42,9 @@ COLLATE utf8_hungarian_ci;
   select * from products;
   select * from users;
 
+  delete from products;
+  delete from users;
+
   insert into users (id,firstName,lastName,username,password,email)
     values
     (1,'Admin','Bácsi','admin',123,'adminba@gmail.com'),
