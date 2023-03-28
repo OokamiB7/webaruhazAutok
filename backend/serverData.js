@@ -478,6 +478,7 @@ app.put("/cars/:id", (req, res) => {
 //#endregion cars
 
 //#region trips ---
+
 app.get("/tripsByCarId/:id", (req, res) => {
   const id = req.params.id;
   let sql = `
@@ -593,6 +594,118 @@ app.put("/trips/:id", (req, res) => {
   });
 });
 //#endregion trips
+
+
+//#region products
+
+//products get
+app.get("/products", (req, res) => {
+  let sql = `
+  select * from products;`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+
+    connection.query(sql, function (error, results, fields) {
+      sendingGet(res, error, results);
+    });
+
+    connection.release();
+  });
+});
+
+//products get by id
+app.get("/products/:id", (req, res) => {
+  const id = req.params.id;
+  let sql = `
+  select * from products
+  where id = ?;`;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(sql, [id], function (error, results, fields) {
+      sendingGetById(res, error, results, id);
+    });
+    connection.release();
+  });
+});
+
+//products post
+app.post("/products", (req, res) => {
+  const newR = {
+    productName: sanitizeHtml(req.body.productName),
+    quantity: sanitizeHtml(req.body.quantity),
+    price: +sanitizeHtml(req.body.price),
+    isInStock: +sanitizeHtml(req.body.isInStock),
+  };
+
+  let sql = `
+  insert products (productName,quantity,price,isInStock)
+      VALUES
+      (?, ?, ?, ?)
+    `;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(
+      sql,
+      [newR.productName, newR.quantity, newR.price,newR.isInStock],
+      function (error, result, fields) {
+        sendingPost(res, error, result, newR);
+      }
+    );
+    connection.release();
+  });
+});
+
+
+//products put
+app.put("/products/:id", (req, res) => {
+  const id = req.params.id;
+  const newR = {
+    productName: sanitizeHtml(req.body.productName),
+    quantity: sanitizeHtml(req.body.quantity),
+    price: +sanitizeHtml(req.body.price),
+    isInStock: +sanitizeHtml(req.body.isInStock)
+  };
+  let sql = `
+    update products set
+    productName = ?,
+    quantity = ?,
+    price = ?,
+    isInStock = ?
+    where id = ?
+      `;
+
+  pool.getConnection(function (error, connection) {
+    if (error) {
+      sendingGetError(res, "Server connecting error!");
+      return;
+    }
+    connection.query(
+      sql,
+      [newR.productName, newR.quantity, newR.price, newR.isInStock, id],
+      function (error, result, fields) {
+        sendingPut(res, error, result, id, newR);
+      }
+    );
+    connection.release();
+  });
+});
+
+
+
+
+//#endregion
 
 function mySanitizeHtml(data) {
   return sanitizeHtml(data, {

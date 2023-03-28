@@ -57,3 +57,32 @@ COLLATE utf8_hungarian_ci;
     (1, 'Féktárcsa', 10, 3500, 1),
     (2, 'Téli gumi', 0, 6500, 0),
     (3, 'Nyáru gumi', 4, 5500, 1);
+
+
+
+
+  ### CRUD Műveletek
+    ## sima get
+     select * from products;
+     select * from users;
+
+
+    ## get by id
+    select * from products
+      where id = 1;
+
+    select * from users
+      where id = 1;
+
+    ##post
+    insert products (productName,quantity,price,isInStock)
+      VALUES
+      ('sqltesztProduct', 2, 5555, 1);
+
+    ##put
+    update products set
+      productName = sqltesztProductUPDATE,
+      quantity = 0,
+      price = 11111,
+      isInStock = 0
+      where id = 4;
