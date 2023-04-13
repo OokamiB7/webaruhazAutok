@@ -218,13 +218,13 @@ Content-Type: application/json
     "firstName": "testUser_fName",
     "lastName": "testUser_lName",
     "username": "testusername",
-    "password": 123321,
+    "password": "123321PROBAPROBAAAAA",
     "email": "testemail@gmail.com"
 }
 
 ###put product
 
-put http://localhost:3000/products/4
+put http://localhost:3000/products/5
 Content-Type: application/json
 
 {
@@ -234,3 +234,21 @@ Content-Type: application/json
     "isInStock": 1
 }
 
+
+###put users
+put http://localhost:3000/users/5
+Content-Type: application/json
+
+{
+    "firstName": "testUser_fNameUPDATE",
+    "lastName": "testUser_lNameUPDATE",
+    "username": "testusernameUPDATE",
+    "password": "123321PROBAPROBAAAAAAFDHGFDHGFDHHGFHGF",
+    "email": "testemailUPDATE@gmail.com"
+}
+
+###delete users
+delete http://localhost:3000/users/5
+
+###delete products
+delete http://localhost:3000/products/6

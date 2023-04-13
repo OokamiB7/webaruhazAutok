@@ -166,13 +166,13 @@ app.put("/users/:id", (req, res) => {
         email: mySanitizeHtml(req.body.email),
     };
     let sql = `
-    UPDATE users SET
-    firstName = ?,
-    lastName = ?,
-    username = ?,
-    password = ?,
-    email = ?,
-    WHERE id = ?
+    update users set
+      firstName = ?,
+      lastName = ?,
+      username = ?,
+      password = ?,
+      email = ?
+      where id = ?;
       `;
 
     pool.getConnection(function(error, connection) {
@@ -681,6 +681,27 @@ app.put("/products/:id", (req, res) => {
         connection.release();
     });
 });
+
+//products delete
+app.delete("/products/:id", (req, res) => {
+    const id = req.params.id;
+
+    let sql = `
+  DELETE FROM products
+  WHERE id = ?`;
+
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(sql, [id], function(error, result, fields) {
+            sendingDelete(res, error, result, id);
+        });
+        connection.release();
+    });
+});
+
 
 
 
