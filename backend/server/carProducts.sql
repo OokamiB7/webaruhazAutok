@@ -111,3 +111,6 @@ COLLATE utf8_hungarian_ci;
       password = 777,
       email = 'updateEmail@gmail.com'
       where id = 4;
+
+    ##delete
+    delete from users where id = 4;

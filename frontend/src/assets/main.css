@@ -1,8 +1,14 @@
 .my-container {
-  max-width: 1200px;
-  border: 1px dashed black;
+    max-width: 1200px;
+    border: 5px ridge gold;
+    backdrop-filter: blur(10px);
+    color: white;
 }
 
 .my-width-100 {
-  width: 100px;
+    width: 100px;
+}
+
+body {
+    background-image: url("imgs/hatter.png");
 }
