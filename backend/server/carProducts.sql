@@ -64,15 +64,13 @@ COLLATE utf8_hungarian_ci;
   ### CRUD Műveletek
     ## sima get
      select * from products;
-     select * from users;
+     
 
 
     ## get by id
     select * from products
       where id = 1;
 
-    select * from users
-      where id = 1;
 
     ##post
     insert products (productName,quantity,price,isInStock)
@@ -85,4 +83,31 @@ COLLATE utf8_hungarian_ci;
       quantity = 0,
       price = 11111,
       isInStock = 0
+      where id = 4;
+
+    ##delete
+    delete from products where id = 4;
+
+
+
+    ## users rész
+    select * from users;
+
+    
+    ## get by id
+    select * from users
+      where id = 1;
+
+    ##post
+    insert users (firstName,lastName,username,password,email)
+      VALUES
+      ('Proba','User','probauser',555,'probaemail@gmail.com');
+
+    ##put
+    update users set
+      firstName = 'updateProba',
+      lastName = 'updateLast',
+      username = 'updateName',
+      password = 777,
+      email = 'updateEmail@gmail.com'
       where id = 4;
