@@ -23,6 +23,22 @@
         <button type="button" class="btn btn-dark">Látogasd meg!</button>
         </div>
       </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Ülések</h5>
+        <p class="card-text">Ár: 37000Ft</p>
+        <button type="button" class="btn btn-dark">Látogasd meg!</button>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Katalizátor</h5>
+        <p class="card-text">Ár: 553000Ft</p>
+        <button type="button" class="btn btn-dark">Látogasd meg!</button>
+        </div>
+      </div>
   
     </div>
 
@@ -72,11 +88,11 @@
 
 #lalo{
   height: 250px;
-  
+  border-radius: 8px;
 }
 
 .bevezetoDiv{
-  max-width: 500px;
+  max-width: 800px;
   margin: 10px;
   float: left;
 }
