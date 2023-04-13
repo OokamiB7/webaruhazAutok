@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/"
         @click="onClickMenu(1)"
-      >Taxi</router-link>
+      >Forzathon</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,12 +24,6 @@
               >Home</router-link
             >
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/about"
-            :class="{active: menuState === 3}"
-            @click="onClickMenu(3)"
-            >About</router-link>
-          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -40,7 +34,7 @@
               :class="{active: menuState === 4}"
               @click="onClickMenu(4)"
             >
-              Taxiállomás
+              Kínálataink
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -62,33 +56,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Counter
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <router-link class="dropdown-item" to="/count1"
-                  :class="{active: menuState === 5}"
-                  @click="onClickMenu(5)"
-                  >Counter1</router-link
-                >
-              </li>
-              <li>
-                <router-link class="dropdown-item" to="/count2"
-                  :class="{active: menuState === 6}"
-                  @click="onClickMenu(6)"
-                  >Counter2</router-link
-                >
-              </li>
-            </ul>
-          </li>
+          
           <li class="nav-item" v-if="!storeLogin.loginSuccess">
             <router-link class="nav-link" to="/login">Login</router-link>
           </li>
@@ -98,15 +66,6 @@
             >
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>

@@ -14,19 +14,6 @@ const router = createRouter({
             },
         },
         {
-            path: "/about",
-            name: "about",
-            // route level code-splitting
-            // this generates a separate chunk (About.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () =>
-                import ("../views/AboutView.vue"),
-            meta: {
-                requiresAuth: false,
-                title: "About / Taxi",
-            },
-        },
-        {
             path: "/taxiFuvarjai",
             name: "taxiFuvarjai",
             component: () =>
@@ -54,26 +41,6 @@ const router = createRouter({
             meta: {
                 requiresAuth: true,
                 title: "Fuvar bevitel / Taxi",
-            },
-        },
-        {
-            path: "/count1",
-            name: "count1",
-            component: () =>
-                import ("../views/Count1View.vue"),
-            meta: {
-                requiresAuth: false,
-                title: "Counter 1 / Taxi",
-            },
-        },
-        {
-            path: "/count2",
-            name: "count2",
-            component: () =>
-                import ("../views/Count2View.vue"),
-            meta: {
-                requiresAuth: false,
-                title: "Counter 2 / Taxi",
             },
         },
         {

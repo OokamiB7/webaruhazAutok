@@ -45,12 +45,12 @@ export default {};
 </script>
 <style>
 .my-bg-cim {
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(0,0,0, 0.1);
   border-radius: 10px;
 }
 .my-fs-cim {
-  font-size: 50px;
-  font-weight: normal;
+  font-size: 60px;
+  font-weight: bold;
   background-image: linear-gradient(60deg, #E21143, #FFB03A);;
   background-color: #f3ec78;
     background-image: linear-gradient(60deg, #E21143, #FFB03A);
