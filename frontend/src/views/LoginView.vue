@@ -12,7 +12,7 @@
     </div>
     <!-- password -->
     <div class="mb-3">
-      <label for="password" class="form-label">password:</label>
+      <label for="password" class="form-label">Password:</label>
       <input
         type="password"
         class="form-control"
@@ -103,4 +103,5 @@ export default {
 .my-width-login {
   max-width: 500px;
 }
+
 </style>
