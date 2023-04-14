@@ -38,8 +38,8 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <router-link class="dropdown-item" to="/taxiFuvarjai"
-                  >Taxi és fuvarjai</router-link
+                <router-link class="dropdown-item" to="/aruhaz"
+                  >Áruház</router-link
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>

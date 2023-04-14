@@ -203,9 +203,9 @@ post http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "productName": "requestrestTesztProduct",
-    "quantity": 77,
-    "price": 3333333,
+    "productName": "fasz",
+    "quantity": 3,
+    "price": 8456456456466,
     "isInStock": 0
 }
 

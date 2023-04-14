@@ -63,6 +63,16 @@ const router = createRouter({
                 title: "404 / Taxi",
             },
         },
+        {
+            path: "/aruhaz",
+            name: "aruhaz",
+            component: () =>
+                import ("../views/AruhazView.vue"),
+            meta: {
+                requiresAuth: true,
+                title: "Taxi Kezelés / Taxi",
+            },
+        },
     ],
 });
 
