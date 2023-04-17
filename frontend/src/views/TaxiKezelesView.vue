@@ -230,7 +230,7 @@ export default {
       this.products = data.data;
     },
     async getProductById(id) {
-      let url = `${this.storeUrl.urlProducts}/${id}`;
+      let url = `http://localhost:3000/products/${id}`;
       const config = {
         method: "GET",
         headers: {
@@ -243,7 +243,7 @@ export default {
     },
 
     async postProduct() {
-      let url = this.storeUrl.urlProducts;
+      let url = "http://localhost:3000/products";
       const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "POST",
@@ -258,7 +258,7 @@ export default {
     },
     async putProduct() {
       const id = this.editableProduct.id;
-      let url = `${this.storeUrl.urlProducts}/${id}`;
+      let url = `http://localhost:3000/products/${id}`;
       const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "PUT",
@@ -272,7 +272,7 @@ export default {
       this.getProducts();
     },
     async deleteProduct(id) {
-      let url = `${this.storeUrl.urlProducts}/${id}`;
+      let url = `http://localhost:3000/products/${id}`;
       const config = {
         method: "DELETE",
         headers: {
