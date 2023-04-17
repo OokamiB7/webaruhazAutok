@@ -49,10 +49,10 @@
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
-          <td>{{ products.productName }}</td>
-          <td>{{ products.quantity }}</td>
-          <td>{{ products.price }}</td>
-          <td>{{ products.isInStock }}</td>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.isInStock }}</td>
         </tr>
       </tbody>
     </table>
@@ -217,7 +217,8 @@ export default {
   },
   methods: {
     async getProducts() {
-      let url = this.storeUrl.storeUrl;
+      // let url = this.storeUrl.storeUrl;
+      let url = "http://localhost:3000/products";
       const config = {
         method: "GET",
         headers: {
@@ -239,19 +240,6 @@ export default {
       const response = await fetch(url, config);
       const data = await response.json();
       this.editableProduct = data.data;
-    },
-
-    async getFreeDriversAbc() {
-      let url = this.storeUrl.urlFreeDriversAbc;
-      const config = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${this.storeLogin.accessToken}`,
-        },
-      };
-      const response = await fetch(url, config);
-      const data = await response.json();
-      this.driversAbc = data.data;
     },
 
     async postProduct() {
@@ -371,6 +359,10 @@ export default {
 
 body{
   color: black;
+}
+
+table{
+  margin: 10px;
 }
 
 
