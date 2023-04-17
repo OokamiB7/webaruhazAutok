@@ -46,12 +46,7 @@
               <li>
                 <router-link class="dropdown-item" to="/taxiKezeles"
                   :class="{ disabled: !storeLogin.loginSuccess }"
-                  >Taxik kezelése</router-link
-                >
-              </li>
-              <li>
-                <router-link class="dropdown-item" to="/fuvarBevitel"
-                  >Fuvar bevitel</router-link
+                  >Áruk kezelése</router-link
                 >
               </li>
             </ul>

@@ -203,10 +203,10 @@ post http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "productName": "Szabo gabor",
-    "quantity": 1,
-    "price": 70,
-    "isInStock": 0
+    "productName": "Katalizátor",
+    "quantity": 2,
+    "price": 553000,
+    "isInStock": 1
 }
 
 ### post users

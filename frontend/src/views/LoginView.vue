@@ -2,7 +2,7 @@
   <div class="p-3 my-width-login">
     <!-- user name -->
     <div class="mb-3">
-      <label for="userName" class="form-label">User name:</label>
+      <label for="userName" class="form-label szoveg">User name:</label>
       <input
         type="text"
         class="form-control"
@@ -12,7 +12,7 @@
     </div>
     <!-- password -->
     <div class="mb-3">
-      <label for="password" class="form-label">Password:</label>
+      <label for="password" class="form-label szoveg">Password:</label>
       <input
         type="password"
         class="form-control"

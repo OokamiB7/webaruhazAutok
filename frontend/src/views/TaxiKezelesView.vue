@@ -1,10 +1,10 @@
 
 <template>
   <div>
-    <h1>Áru kezelés</h1>
+    <h1 class="Cim">Áru kezelés</h1>
 
     <!--#region táblázat -->
-    <table class="table table-bordered table-hover w-auto">
+    <table class="table table-bordered table-hover w-auto szoveg">
       <thead>
         <tr>
           <th>
@@ -49,10 +49,10 @@
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
-          <td>{{ product.productName }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.isInStock }}</td>
+          <td>{{ products.productName }}</td>
+          <td>{{ products.quantity }}</td>
+          <td>{{ products.price }}</td>
+          <td>{{ products.isInStock }}</td>
         </tr>
       </tbody>
     </table>
@@ -142,18 +142,6 @@
                 />
                 <div class="invalid-feedback">A raktáron kitöltése kötelező</div>
               </div>
-
-              <!-- <div class="col-md-6">
-                <select class="form-select" aria-label="Default select example"
-                  v-model="editableCar.driverId"
-                >
-                <option :value="null">Nincs sofőr</option>
-                <option v-for="(driver, index) in driversAbc" :key="`op${index}`"
-                  :value="driver.id">
-                  {{ driver.driverName }}
-                </option>
-                </select>
-              </div> -->
             </form>
             <!--#endregion Form -->
           </div>
@@ -194,9 +182,9 @@ class Product {
   constructor(
     id = 0,
     productName = null,
-    quantity = 0,
-    price = 0,
-    isInStock = 0,
+    quantity = null,
+    price = null,
+    isInStock = null,
   ) {
     this.id = id;
     this.productName = productName;
@@ -217,12 +205,10 @@ export default {
       form: null,
       state: "view",
       currentId: null,
-      driversAbc: [],
     };
   },
   mounted() {
     this.getProducts();
-    this.getFreeDriversAbc();
     this.modal = new bootstrap.Modal(document.getElementById("modalProduct"), {
       keyboard: false,
     });
@@ -231,7 +217,7 @@ export default {
   },
   methods: {
     async getProducts() {
-      let url = this.storeUrl.urlProductsWithDrivers;
+      let url = this.storeUrl.storeUrl;
       const config = {
         method: "GET",
         headers: {
@@ -241,10 +227,6 @@ export default {
       const response = await fetch(url, config);
       const data = await response.json();
       this.products = data.data;
-      // this.cars = data.data.map((car) => {
-      //   car.outOfTraffic = car.outOfTraffic === 1;
-      //   return car;
-      // });
     },
     async getProductById(id) {
       let url = `${this.storeUrl.urlProducts}/${id}`;

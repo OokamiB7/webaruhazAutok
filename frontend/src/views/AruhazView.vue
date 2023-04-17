@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 id="cim">Áruház</h1>
+    <h1 class="Cim">Áruház</h1>
 
 
      <div class="col-md-12 my-border">
@@ -14,14 +14,15 @@
               <div class="card-body">
                 <h5 class="card-title" v-html="product.productName"></h5>
                 <p> Ár: {{ product.price}}Ft</p>
-                <p> Raktáron: {{ product.quantity}}DB</p>
+                <p> Darab: {{product.quantity}}</p>
+                <p> Raktáron: {{ product.isInStock}}DB</p>
 
                 <button
                   type="button"
                   class="btn btn-primary"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
-                 @click="onClickReszletek(hal.FejezetId)"
+                 @click="onClickReszletek(product.productId)"
                 >
                   Kosárba
                 </button>
