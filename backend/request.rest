@@ -203,9 +203,9 @@ post http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "productName": "fasz",
-    "quantity": 3,
-    "price": 8456456456466,
+    "productName": "Szabo gabor",
+    "quantity": 1,
+    "price": 70,
     "isInStock": 0
 }
 
@@ -251,4 +251,4 @@ Content-Type: application/json
 delete http://localhost:3000/users/5
 
 ###delete products
-delete http://localhost:3000/products/6
+delete http://localhost:3000/products/7

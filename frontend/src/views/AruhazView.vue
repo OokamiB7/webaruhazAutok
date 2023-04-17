@@ -100,6 +100,9 @@ class ProductKartya {
   }
 }
 
+import { storeToRefs } from "pinia";
+
+
 export default {
   data() {
     return {
@@ -140,4 +143,14 @@ export default {
   overflow-y: auto;
 }
   
+.modal-backdrop {
+    display: none;
+    z-index: 1040 !important;
+}
+
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+
 </style>

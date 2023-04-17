@@ -1,42 +1,41 @@
 
 <template>
   <div>
-    <h1>Taxi kezelés</h1>
+    <h1>Áru kezelés</h1>
 
     <!--#region táblázat -->
     <table class="table table-bordered table-hover w-auto">
       <thead>
         <tr>
           <th>
-            <!-- New car -->
+            <!-- New product -->
             <button
               type="button"
               class="btn btn-outline-success btn-sm"
               @click="onClickNew()"
             >
-              Új autó
+              Új áru
             </button>
           </th>
-          <th>Autó márka</th>
-          <th>Rendszám</th>
-          <th>Tarifa (Ft/óra)</th>
-          <th>Vezető</th>
-          <th>Forgalmon kívül</th>
+          <th>Áru név</th>
+          <th>Darab</th>
+          <th>Ár</th>
+          <th>Raktáron</th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="(car, index) in cars"
-          :key="`car${index}`"
-          :class="currentRowBackground(car.id)"
-          @click="onClikRow(car.id)"
+          v-for="(product, index) in products"
+          :key="`product${index}`"
+          :class="currentRowBackground(product.id)"
+          @click="onClikRow(product.id)"
         >
           <td class="text-nowrap">
             <!-- törlés -->
             <button
               type="button"
               class="btn btn-outline-danger btn-sm"
-              @click="onClickDelete(car.id)"
+              @click="onClickDelete(product.id)"
             >
               <i class="bi bi-trash3-fill"></i>
             </button>
@@ -45,24 +44,15 @@
             <button
               type="button"
               class="btn btn-outline-primary btn-sm ms-2"
-              @click="onClickEdit(car.id)"
+              @click="onClickEdit(product.id)"
             >
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
-          <td>{{ car.name }}</td>
-          <td>{{ car.licenceNumber }}</td>
-          <td>{{ car.hourlyRate }}</td>
-          <td>{{ car.driverName }}</td>
-          <td>
-            <input
-              class="form-check-input"
-              disabled
-              type="checkbox"
-              :id="`cb${index}`"
-              v-model="car.outOfTraffic"
-            />
-          </td>
+          <td>{{ product.productName }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.isInStock }}</td>
         </tr>
       </tbody>
     </table>
@@ -71,9 +61,9 @@
     <!--#region Modal -->
     <div
       class="modal fade"
-      id="modalCar"
+      id="modalProduct"
       tabindex="-1"
-      aria-labelledby="modalCarModalLabel"
+      aria-labelledby="modalProductModalLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog">
@@ -95,64 +85,65 @@
             <!--#region Form -->
 
             <form class="row g-3 needs-validation" novalidate>
-              <!-- Autó név -->
+              <!-- Áru név -->
               <div class="col-md-12">
-                <label for="name" class="form-label">Autó név</label>
+                <label for="productName" class="form-label">Áru név</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="productName"
                   required
-                  v-model="editableCar.name"
+                  v-model="editableProduct.productName"
                 />
                 <div class="invalid-feedback">A név kitöltése kötelező</div>
               </div>
 
-              <!-- Rendszám -->
+              <!-- Darab -->
               <div class="col-md-6">
-                <label for="licenceNumber" class="form-label">Rendszám</label>
+                <label for="quantity" class="form-label">Darab</label>
                 <input
-                  type="text"
+                  type="number"
                   class="form-control"
-                  id="licenceNumber"
+                  id="quantity"
                   required
-                  v-model="editableCar.licenceNumber"
+                  v-model="editableProduct.quantity"
                 />
                 <div class="invalid-feedback">
-                  A rendszám kitöltése kötelező
+                  A darab kitöltése kötelező
                 </div>
               </div>
 
-              <!-- Rendszám -->
+              <!-- Ár -->
               <div class="col-md-6">
-                <label for="hourlyRate" class="form-label"
-                  >Tarifa (Ft/óra)</label
+                <label for="price" class="form-label"
+                  >Ár</label
                 >
                 <input
                   type="number"
                   class="form-control"
-                  id="hourlyRate"
+                  id="price"
                   required
-                  v-model="editableCar.hourlyRate"
+                  v-model="editableProduct.price"
                 />
-                <div class="invalid-feedback">A tarifa kitöltése kötelező</div>
+                <div class="invalid-feedback">Az ár kitöltése kötelező</div>
               </div>
 
-              <!-- out of traffic -->
+              <!-- Raktáron -->
               <div class="col-md-6">
+                <label for="isInStock" class="form-label"
+                  >Raktáron</label
+                >
                 <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="outOfTraffic"
-                  v-model="editableCar.outOfTraffic"
+                  type="number"
+                  class="form-control"
+                  id="isInStock"
+                  required
+                  v-model="editableProduct.isInStock"
                 />
-                <label class="form-check-label ms-2" for="flexCheckDefault">
-                  Forgalmon kívül
-                </label>
+                <div class="invalid-feedback">A raktáron kitöltése kötelező</div>
               </div>
 
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <select class="form-select" aria-label="Default select example"
                   v-model="editableCar.driverId"
                 >
@@ -162,7 +153,7 @@
                   {{ driver.driverName }}
                 </option>
                 </select>
-              </div>
+              </div> -->
             </form>
             <!--#endregion Form -->
           </div>
@@ -199,21 +190,19 @@ import { useLoginStore } from "@/stores/login";
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
 
-class Car {
+class Product {
   constructor(
     id = 0,
-    name = null,
-    licenceNumber = null,
-    hourlyRate = null,
-    outOfTraffic = false,
-    driverId = null
+    productName = null,
+    quantity = 0,
+    price = 0,
+    isInStock = 0,
   ) {
     this.id = id;
-    this.name = name;
-    this.licenceNumber = licenceNumber;
-    this.hourlyRate = hourlyRate;
-    this.outOfTraffic = outOfTraffic;
-    this.driverId = driverId;
+    this.productName = productName;
+    this.quantity = quantity;
+    this.price = price;
+    this.isInStock = isInStock;
   }
 }
 
@@ -222,8 +211,8 @@ export default {
     return {
       storeUrl,
       storeLogin,
-      cars: [],
-      editableCar: new Car(),
+      products: [],
+      editableProduct: new Product(),
       modal: null,
       form: null,
       state: "view",
@@ -232,17 +221,17 @@ export default {
     };
   },
   mounted() {
-    this.getCars();
+    this.getProducts();
     this.getFreeDriversAbc();
-    this.modal = new bootstrap.Modal(document.getElementById("modalCar"), {
+    this.modal = new bootstrap.Modal(document.getElementById("modalProduct"), {
       keyboard: false,
     });
 
     this.form = document.querySelector(".needs-validation");
   },
   methods: {
-    async getCars() {
-      let url = this.storeUrl.urlCarsWithDrivers;
+    async getProducts() {
+      let url = this.storeUrl.urlProductsWithDrivers;
       const config = {
         method: "GET",
         headers: {
@@ -251,14 +240,14 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.cars = data.data;
+      this.products = data.data;
       // this.cars = data.data.map((car) => {
       //   car.outOfTraffic = car.outOfTraffic === 1;
       //   return car;
       // });
     },
-    async getCarById(id) {
-      let url = `${this.storeUrl.urlCars}/${id}`;
+    async getProductById(id) {
+      let url = `${this.storeUrl.urlProducts}/${id}`;
       const config = {
         method: "GET",
         headers: {
@@ -267,7 +256,7 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.editableCar = data.data;
+      this.editableProduct = data.data;
     },
 
     async getFreeDriversAbc() {
@@ -283,9 +272,9 @@ export default {
       this.driversAbc = data.data;
     },
 
-    async postCar() {
-      let url = this.storeUrl.urlCars;
-      const body = JSON.stringify(this.editableCar);
+    async postProduct() {
+      let url = this.storeUrl.urlProducts;
+      const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "POST",
         headers: {
@@ -295,12 +284,12 @@ export default {
         body: body,
       };
       const response = await fetch(url, config);
-      this.getCars();
+      this.getProducts();
     },
-    async putCar() {
-      const id = this.editableCar.id;
-      let url = `${this.storeUrl.urlCars}/${id}`;
-      const body = JSON.stringify(this.editableCar);
+    async putProduct() {
+      const id = this.editableProduct.id;
+      let url = `${this.storeUrl.urlProducts}/${id}`;
+      const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "PUT",
         headers: {
@@ -310,10 +299,10 @@ export default {
         body: body,
       };
       const response = await fetch(url, config);
-      this.getCars();
+      this.getProducts();
     },
-    async deleteCar(id) {
-      let url = `${this.storeUrl.urlCars}/${id}`;
+    async deleteProduct(id) {
+      let url = `${this.storeUrl.urlProducts}/${id}`;
       const config = {
         method: "DELETE",
         headers: {
@@ -322,7 +311,7 @@ export default {
         },
       };
       const response = await fetch(url, config);
-      this.getCars();
+      this.getProducts();
     },
     onClikRow(id) {
       this.currentId = id;
@@ -330,22 +319,21 @@ export default {
     onClickNew() {
       this.state = "new";
       this.currentId = null;
-      this.editableCar = new Car();
+      this.editableProduct = new Product();
       this.modal.show();
     },
     onClickDelete(id) {
       this.state = "delete";
-      this.deleteCar(id);
+      this.deleteProduct(id);
       this.currentId = null;
     },
     onClickEdit(id) {
       this.state = "edit";
-      this.getCarById(id);
-      this.getFreeDriversAbc();
+      this.getProductById(id);
       this.modal.show();
     },
     onClickCancel() {
-      this.editableCar = new Car();
+      this.editableProduct = new Product();
       this.modal.hide();
     },
     onClickSave() {
@@ -353,16 +341,15 @@ export default {
       if (this.form.checkValidity()) {
         if (this.state == "edit") {
           //put
-          this.putCar();
+          this.putProduct();
           // this.modal.hide();
         } else if (this.state == "new") {
           //post
-          this.postCar();
+          this.postProduct();
           // this.modal.hide();
         }
         this.modal.hide();
         //frissíti a taxisok listáját
-        this.getFreeDriversAbc()
       }
     },
     currentRowBackground(id) {
@@ -375,9 +362,9 @@ export default {
   computed: {
     stateTitle() {
       if (this.state === "new") {
-        return "Új autó bevitele";
+        return "Új áru bevitele";
       } else if (this.state === "edit") {
-        return "Autó módosítása";
+        return "Áru módosítása";
       }
     },
   },
@@ -389,4 +376,20 @@ export default {
 .my-bg-current-row {
   background-color: lightgrey;
 }
+
+.modal-backdrop {
+    display: none;
+    z-index: 1040 !important;
+}
+
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+
+body{
+  color: black;
+}
+
+
 </style>
