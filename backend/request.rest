@@ -224,11 +224,11 @@ Content-Type: application/json
 
 ###put product
 
-put http://localhost:3000/products/5
+put http://localhost:3000/products/15
 Content-Type: application/json
 
 {
-    "productName": "requestrestPUTTESZT",
+    "productName": "test updated",
     "quantity": 777,
     "price": 3,
     "isInStock": 1
