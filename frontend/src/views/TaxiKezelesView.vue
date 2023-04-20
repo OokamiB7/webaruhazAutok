@@ -217,8 +217,7 @@ export default {
   },
   methods: {
     async getProducts() {
-      // let url = this.storeUrl.storeUrl;
-      let url = "http://localhost:3000/products";
+      let url = this.storeUrl.urlProducts;
       const config = {
         method: "GET",
         headers: {
@@ -230,7 +229,7 @@ export default {
       this.products = data.data;
     },
     async getProductById(id) {
-      let url = `http://localhost:3000/products/${id}`;
+      let url = `${this.storeUrl.urlProducts}/${id}`;
       const config = {
         method: "GET",
         headers: {
@@ -243,7 +242,7 @@ export default {
     },
 
     async postProduct() {
-      let url = "http://localhost:3000/products";
+      let url = this.storeUrl.urlProducts;
       const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "POST",
@@ -258,7 +257,7 @@ export default {
     },
     async putProduct() {
       const id = this.editableProduct.id;
-      let url = `http://localhost:3000/products/${id}`;
+      let url =`${this.storeUrl.urlProducts}/${id}`;
       const body = JSON.stringify(this.editableProduct);
       const config = {
         method: "PUT",
@@ -272,7 +271,7 @@ export default {
       this.getProducts();
     },
     async deleteProduct(id) {
-      let url = `http://localhost:3000/products/${id}`;
+      let url = `${this.storeUrl.urlProducts}/${id}`;
       const config = {
         method: "DELETE",
         headers: {
@@ -324,9 +323,6 @@ export default {
     },
     currentRowBackground(id) {
       return this.currentId == id ? "my-bg-current-row" : "";
-    },
-    outOfTrafficName(outOfTraffic) {
-      return outOfTraffic ? "igen" : "nem";
     },
   },
   computed: {
