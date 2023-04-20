@@ -4,7 +4,7 @@
     <h1 class="Cim">Áru kezelés</h1>
 
     <!--#region táblázat -->
-    <table class="table table-bordered table-hover w-auto szoveg">
+    <table class="table table-bordered w-auto szoveg">
       <thead>
         <tr>
           <th>
@@ -49,10 +49,10 @@
               <i class="bi bi-pencil-fill"></i>
             </button>
           </td>
-          <td>{{ product.productName }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.isInStock }}</td>
+          <td class="fasz">{{ product.productName }}</td>
+          <td class="fasz">{{ product.quantity }}</td>
+          <td class="fasz">{{ product.price }}</td>
+          <td class="fasz">{{ product.isInStock }}</td>
         </tr>
       </tbody>
     </table>
@@ -343,9 +343,9 @@ export default {
 
 
 <style>
-.my-bg-current-row {
+/* .my-bg-current-row {
   background-color: lightgrey;
-}
+} */
 
 .modal-backdrop {
     display: none;
@@ -358,12 +358,18 @@ export default {
 }
 
 body{
-  color: black;
+  color: red;
 }
 
 table{
   margin: 10px;
 }
+
+tr:hover{
+  color: gold;
+  cursor: default;
+}
+
 
 
 </style>

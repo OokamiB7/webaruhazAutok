@@ -19,12 +19,12 @@
 
                 <button
                   type="button"
-                  class="btn btn-primary"
+                  class="btn btn-dark"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal"
                  @click="onClickReszletek(product.productId)"
                 >
-                  Kosárba
+                  Megtekintés
                 </button>
               </div>
             </div>
@@ -49,7 +49,7 @@
             
           </div>
           <div class="modal-body">
-            <table class="table table-success">
+            <table class="table table-dark">
               <thead>
                 <tr>
                   <th>Ár: </th>
@@ -78,12 +78,23 @@
           <div class="modal-footer">
             <button
               type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Vásárlás
+            </button>
+
+            <button
+              type="button"
               class="btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Close
             </button>
           </div>
+          
+            
+          
         </div>
       </div>
     </div>
@@ -139,6 +150,11 @@ export default {
 </script>
 
 <style>
+
+h5{
+  font-weight: bold;
+}
+
 .modal-body {
   max-height: calc(100vh - 180px);
   overflow-y: auto;
