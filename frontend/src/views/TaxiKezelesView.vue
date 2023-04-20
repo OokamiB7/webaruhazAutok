@@ -4,7 +4,7 @@
     <h1 class="Cim">Áru kezelés</h1>
 
     <!--#region táblázat -->
-    <table class="table table-bordered w-auto szoveg">
+    <table class="table  table-striped table-dark table-bordered w-auto szoveg">
       <thead>
         <tr>
           <th>
@@ -347,6 +347,10 @@ export default {
   background-color: lightgrey;
 } */
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .modal-backdrop {
     display: none;
     z-index: 1040 !important;
@@ -366,7 +370,6 @@ table{
 }
 
 tr:hover{
-  color: gold;
   cursor: default;
 }
 
