@@ -39,6 +39,23 @@
         <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
         </div>
       </div>
+
+            <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Benzines kanna</h5>
+        <p class="card-text">Ár: 7500Ft</p>
+        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-title">Csavarok</h5>
+        <p class="card-text">Ár: 750Ft</p>
+        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
+        </div>
+      </div>
+
   
     </div>
 

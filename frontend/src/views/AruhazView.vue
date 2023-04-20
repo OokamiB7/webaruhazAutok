@@ -151,6 +151,14 @@ export default {
 
 <style>
 
+.card{
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  max-height: 300px;
+}
+
+
 h5{
   font-weight: bold;
 }
