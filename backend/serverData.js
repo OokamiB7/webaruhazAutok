@@ -603,15 +603,15 @@ app.get("/products", (req, res) => {
 app.get("/products/:id", (req, res) => {
     const id = req.params.id;
     let sql = `
-  select * from products
-  where id = ?;`;
+      SELECT * FROM products
+      WHERE id = ?`;
 
     pool.getConnection(function(error, connection) {
         if (error) {
             sendingGetError(res, "Server connecting error!");
             return;
         }
-        connection.query(sql, [id], function(error, results, fields) {
+        connection.query(sql, [id], async function(error, results, fields) {
             sendingGetById(res, error, results, id);
         });
         connection.release();

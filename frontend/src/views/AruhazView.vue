@@ -35,15 +35,15 @@
     <!-- modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="modalProduct"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby="modalProductLabel"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel" v-html="productKartya.productName">
+            <h1 class="modal-title fs-5" id="modalProduct" v-html="productKartya.productName">
              
             </h1>
             
@@ -113,6 +113,7 @@ class ProductKartya {
 }
 
 import { storeToRefs } from "pinia";
+import * as bootstrap from "bootstrap";
 
 
 export default {
@@ -127,7 +128,10 @@ export default {
   },
   mounted(){
     this.getProductKartyak();
-  },
+    this.modal = new bootstrap.Modal(document.getElementById("modalProduct"), {
+      keyboard: false,
+    }
+  )},
   methods: {
     async getProductKartyak() {
       const response = await fetch(this.urlProducts);
@@ -142,7 +146,9 @@ export default {
     },
         onClickReszletek(productId) {
       this.productId = productId;
-      this.getProductKartya();
+      this.getProductKartya(productId);
+            this.modal.show();
+
     },
 
   }
