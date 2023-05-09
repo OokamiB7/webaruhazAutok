@@ -254,3 +254,6 @@ delete http://localhost:3000/users/5
 
 ###delete products
 delete http://localhost:3000/products/7
+
+###products szur
+get http://localhost:3000/productsSzur/gumi

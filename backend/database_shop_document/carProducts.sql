@@ -42,6 +42,10 @@ COLLATE utf8_hungarian_ci;
   select * from products;
   select * from users;
 
+  select id, productName,quantity,price,isInStock,description from products
+    where productName like 'a'
+    order by productName;
+
   delete from products;
   delete from users;
 

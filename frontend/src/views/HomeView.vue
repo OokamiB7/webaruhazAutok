@@ -104,14 +104,19 @@ class ProductKartya {
 
 import { storeToRefs } from "pinia";
 import * as bootstrap from "bootstrap";
+import { useKeresStore } from "@/stores/keres";
+const storeKeres = useKeresStore();
+const { keresoszo } = storeToRefs(storeKeres);
 
 export default {
   data() {
     return {
       products: [],
       urlProducts: "http://localhost:3000/products",
+      urlProductsSzur: "http://localhost:3000/productsSzur",
       productKartya: new ProductKartya(),
       productId: null,
+      keresoszo,
     };
   },
   mounted() {
@@ -119,6 +124,15 @@ export default {
     this.modal = new bootstrap.Modal(document.getElementById("modalProduct"), {
       keyboard: false,
     });
+  },
+  watch: {
+    keresoszo(){
+      if (this.keresoszo.trim()) {
+        this.getProductKartyakSzur();
+      } else {
+        this.getProductKartyak();
+      }
+    }
   },
   methods: {
     async getProductKartyak() {
@@ -136,6 +150,25 @@ export default {
       this.productId = id;
       this.getProductKartya(id);
       this.modal.show();
+    },
+    async getProductKartyakSzur() {
+      const urlProducts = `${this.urlProductsSzur}/${this.keresoszo}`;
+      const response = await fetch(urlProducts);
+      const data = await response.json();
+      this.products = data.data;
+    },
+    keresJelol(text) {
+      if (this.keresoszo) {
+        let what = new RegExp(this.keresoszo, "gi");
+        if (text) {
+          text = text.replace(what, (match) => {
+            return `<span class="mark">${match}</span>`;
+          });
+        }
+        return text;
+      } else {
+        return text;
+      }
     },
   },
 };

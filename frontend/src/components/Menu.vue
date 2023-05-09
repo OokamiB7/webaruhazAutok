@@ -60,6 +60,16 @@
               >Logout ({{ storeLogin.userName }})</router-link
             >
           </li>
+          <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            v-model="storeKeres.keresoszo"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
         </ul>
       </div>
     </div>
@@ -69,6 +79,8 @@
 <script setup>
 import { useUrlStore } from "@/stores/url";
 import { useLoginStore } from "@/stores/login";
+import { useKeresStore } from "@/stores/keres";
+const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
 

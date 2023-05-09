@@ -707,6 +707,25 @@ app.delete("/products/:id", (req, res) => {
     });
 });
 
+app.get("/productsSzur/:keres", (req, res) => {
+    const keres = `%${req.params.keres}%`;
+    let sql = `
+    select id, productName,quantity,price,isInStock,description from products
+    where productName like ?
+    order by productName;
+    `;
+
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(sql, [keres, keres], function(error, results, fields) {
+            sendingGetById(res, error, results, keres);
+        });
+        connection.release();
+    });
+});
 
 
 
