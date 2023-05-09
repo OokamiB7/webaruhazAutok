@@ -633,7 +633,7 @@ app.post("/products", (req, res) => {
     let sql = `
     insert into products (productName,quantity,price,isInStock, description)
     VALUES
-    (?, ?, ?, ?, ?),
+    (?, ?, ?, ?, ?)
     `;
 
     pool.getConnection(function(error, connection) {
@@ -678,7 +678,7 @@ app.put("/products/:id", (req, res) => {
             return;
         }
         connection.query(
-            sql, [newR.productName, newR.quantity, newR.price, newR.isInStock, id],
+            sql, [newR.productName, newR.quantity, newR.price, newR.isInStock, newR.description, id],
             function(error, result, fields) {
                 sendingPut(res, error, result, id, newR);
             }

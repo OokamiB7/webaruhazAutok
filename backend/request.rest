@@ -203,11 +203,11 @@ post http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "productName": "Katalizátor",
-    "quantity": 2,
-    "price": 553000,
-    "isInStock": 1,
-    "description": "teszt"
+    "productName": "post producttttt",
+    "quantity": 2222222,
+    "price": 123123123132,
+    "isInStock": 166666666,
+    "description": "teszttesztteszt"
 }
 
 ### post users
@@ -225,14 +225,15 @@ Content-Type: application/json
 
 ###put product
 
-put http://localhost:3000/products/15
+put http://localhost:3000/products/34
 Content-Type: application/json
 
 {
-    "productName": "test updated",
-    "quantity": 777,
-    "price": 3,
-    "isInStock": 1
+    "productName": "plüss dobókocka",
+    "quantity": 76,
+    "price": 1750,
+    "isInStock": 10,
+    "description": "teszt"
 }
 
 
