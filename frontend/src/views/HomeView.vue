@@ -8,6 +8,7 @@
         <div class="col" v-for="(product, index) in products" :key="index">
           <div class="card my-bg-card">
             <div class="card-body">
+              <img class="card-img-top" src="../images/BBS Felni.jpg" alt="Áru képe">
               <h5 class="card-title" v-html="product.productName"></h5>
               <p>Ár: {{ product.price }}Ft</p>
               <p>Darab: {{ product.quantity }}</p>
