@@ -41,13 +41,13 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "h",
-    "lastName": "Fehér",
+    "firstName": "Farkas",
+    "lastName": "Bence",
     "gender": "férfi",
-    "userName": "h1",
-    "email": "feher.h1@gmail.com",
-    "password": "jozsi123",
-    "number": 33333333
+    "username": "fbence",
+    "email": "farkas.bence03@gmail.com",
+    "password": "123",
+    "number": 0
 }
 
 ### User módosítása
@@ -194,7 +194,7 @@ get http://localhost:3000/products/1
 
 ### get users by id
 
-get http://localhost:3000/users/2
+get http://localhost:3000/users/5
 
 
 ### post product
@@ -206,7 +206,8 @@ Content-Type: application/json
     "productName": "Katalizátor",
     "quantity": 2,
     "price": 553000,
-    "isInStock": 1
+    "isInStock": 1,
+    "description": "teszt"
 }
 
 ### post users

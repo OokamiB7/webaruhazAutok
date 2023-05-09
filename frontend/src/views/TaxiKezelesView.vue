@@ -238,7 +238,7 @@ export default {
       };
       const response = await fetch(url, config);
       const data = await response.json();
-      this.editableProduct = data.data;
+      this.editableProduct = data.data[0];
     },
 
     async postProduct() {

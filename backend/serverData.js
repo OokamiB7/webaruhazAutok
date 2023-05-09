@@ -76,6 +76,7 @@ app.post("/users", (req, res) => {
         username: mySanitizeHtml(req.body.username),
         password: req.body.password,
         email: mySanitizeHtml(req.body.email),
+        number: req.body.number
     };
 
     //user ellenőrzés
@@ -112,9 +113,9 @@ app.post("/users", (req, res) => {
                 //mehet a regisztráció
 
                 sql = `insert into users
-      (firstName, lastName, username, password, email)
+      (firstName, lastName, username, password, email, number)
       values
-      (?,?,?,?,?)
+      (?,?,?,?,?,?)
     `;
                 connection.query(
                     sql, [
@@ -123,6 +124,7 @@ app.post("/users", (req, res) => {
                         newR.username,
                         newR.password,
                         newR.email,
+                        newR.number
                     ],
                     function(error, result, fields) {
                         sendingPost(res, error, result, newR);
@@ -625,12 +627,13 @@ app.post("/products", (req, res) => {
         quantity: sanitizeHtml(req.body.quantity),
         price: +sanitizeHtml(req.body.price),
         isInStock: +sanitizeHtml(req.body.isInStock),
+        description: sanitizeHtml(req.body.description)
     };
 
     let sql = `
-  insert products (productName,quantity,price,isInStock)
-      VALUES
-      (?, ?, ?, ?)
+    insert into products (productName,quantity,price,isInStock, description)
+    VALUES
+    (?, ?, ?, ?, ?),
     `;
 
     pool.getConnection(function(error, connection) {
@@ -639,7 +642,7 @@ app.post("/products", (req, res) => {
             return;
         }
         connection.query(
-            sql, [newR.productName, newR.quantity, newR.price, newR.isInStock],
+            sql, [newR.productName, newR.quantity, newR.price, newR.isInStock, newR.description],
             function(error, result, fields) {
                 sendingPost(res, error, result, newR);
             }
@@ -656,14 +659,16 @@ app.put("/products/:id", (req, res) => {
         productName: sanitizeHtml(req.body.productName),
         quantity: sanitizeHtml(req.body.quantity),
         price: +sanitizeHtml(req.body.price),
-        isInStock: +sanitizeHtml(req.body.isInStock)
+        isInStock: +sanitizeHtml(req.body.isInStock),
+        description: sanitizeHtml(req.body.description)
     };
     let sql = `
     update products set
     productName = ?,
     quantity = ?,
     price = ?,
-    isInStock = ?
+    isInStock = ?,
+    description = ?
     where id = ?
       `;
 

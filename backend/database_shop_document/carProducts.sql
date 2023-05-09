@@ -45,18 +45,17 @@ COLLATE utf8_hungarian_ci;
   delete from products;
   delete from users;
 
-  insert into users (id,firstName,lastName,username,password,email)
-    values
-    (1,'Admin','Bácsi','admin',123,'adminba@gmail.com'),
-    (2,'Kovács','Ferenc','kferi','feri123','kferenc@gmail.com'),
-    (3,'Nagy','Zsolt','nzsolti',123456,'zsoltinagy@gmail.com');
+ update users set number = 1
+  where username = 'admin';
+
+ update users set number = 0
+  where username != 'admin';
 
 
-  insert into products (id,productName,quantity,price,isInStock)
+  insert into products (productName,quantity,price,isInStock, description)
     VALUES
-    (1, 'Féktárcsa', 10, 3500, 1),
-    (2, 'Téli gumi', 0, 6500, 0),
-    (3, 'Nyáru gumi', 4, 5500, 1);
+    ('Katalizátor', 7, 5200000, 5, 'teszt leírás');
+    
 
 
 
@@ -98,19 +97,8 @@ COLLATE utf8_hungarian_ci;
     select * from users
       where id = 1;
 
-    ##post
-    insert users (firstName,lastName,username,password,email)
-      VALUES
-      ('Proba','User','probauser',555,'probaemail@gmail.com');
+   
 
-    ##put
-    update users set
-      firstName = 'updateProba',
-      lastName = 'updateLast',
-      username = 'updateName',
-      password = 777,
-      email = 'updateEmail@gmail.com'
-      where id = 4;
-
+   
     ##delete
     delete from users where id = 4;
