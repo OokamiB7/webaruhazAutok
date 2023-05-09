@@ -1,131 +1,170 @@
 <template>
-  <div>
+  <div class="p-3">
+    <h1 class="Cim">Áruház</h1>
 
-    <div class="home-container">
-    <h1 class="Cim">Üdvözöljük</h1>
-    <div class="bevezetoDiv">
-      <p class="szoveg">Webáruházunk segítésgével az otthonából tud Forzathon termékeket rendelni az ország bármely pontjáról. A forzathon Magyarország legnagyobb autóalkatrész üzletlánca. 1988 óta működünk és csak minőségi alkatrészeket nyújtunk kedves vásárlóinknat. Itt a Forzathonnál a legfontossabb számunkra az a vásárlóink mosolya. További információkért fáradjon a GYIK felülethez vagy érdeklődjön telefonon!</p>
-      
-      <h2 class="kisCim">Most felkapott:</h2>
+    <div class="col-md-12 my-border">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        <!-- kártya temlate -->
+        <div class="col" v-for="(product, index) in products" :key="index">
+          <div class="card my-bg-card">
+            <div class="card-body">
+              <h5 class="card-title" v-html="product.productName"></h5>
+              <p>Ár: {{ product.price }}Ft</p>
+              <p>Darab: {{ product.quantity }}</p>
+              <p>Raktáron: {{ product.isInStock }}DB</p>
 
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">BBS Felni - 17'</h5>
-        <p class="card-text">Ár: 45000Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
+              <button
+                type="button"
+                class="btn btn-dark"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                @click="onClickReszletek(product.id)"
+              >
+                Megtekintés
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Fékpofa</h5>
-        <p class="card-text">Ár: 13500Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Ülések</h5>
-        <p class="card-text">Ár: 37000Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Katalizátor</h5>
-        <p class="card-text">Ár: 553000Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
-        </div>
-      </div>
-
-            <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Benzines kanna</h5>
-        <p class="card-text">Ár: 7500Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
-        </div>
-      </div>
-
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-title">Csavarok</h5>
-        <p class="card-text">Ár: 750Ft</p>
-        <button type="button" class="btn btn-dark"><router-link class="nav-link" to="/aruhaz">Látogasd meg</router-link></button>
-        </div>
-      </div>
-
-  
     </div>
 
-    <div class="elerhetosegDiv">
-      <p class="szoveg">Elérhetőségek: </p>
-      <img id="lalo" src="imgs/lalo.jpg" alt="">
-      <p class="szoveg">Farkas Bence, vezérigazgató</p>
-      <p class="szoveg">Tel.: 3620123456</p>
-      <p class="szoveg">Hétfő-Péntek (9:00 - 18:00)</p>
+    <!-- modal -->
+    <div
+      class="modal fade"
+      id="modalProduct"
+      tabindex="-1"
+      aria-labelledby="modalProductLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1
+              class="modal-title fs-5"
+              id="modalProduct"
+              v-html="productKartya.productName"
+            ></h1>
+          </div>
+          <div class="modal-body">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th>Ár:</th>
+                  <th>Darab</th>
+                  <th>Raktáron</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ productKartya.price }}</td>
+                  <td>{{ productKartya.quantity }}</td>
+                  <td>{{ productKartya.isInStock }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- <img
+                :src="`/public/kepek/${halKartya.KepFile}`"
+                class="card-img-top"
+                alt="..."
+              /> -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Vásárlás
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-    </div>
-
-
-
-
-
-
   </div>
 </template>
 
-<script setup>
+<script>
+class ProductKartya {
+  constructor() {
+    this.productName = null;
+    this.quantity = null;
+    this.price = null;
+    this.isInStock = null;
+  }
+}
 
+import { storeToRefs } from "pinia";
+import * as bootstrap from "bootstrap";
+
+export default {
+  data() {
+    return {
+      products: [],
+      urlProducts: "http://localhost:3000/products",
+      productKartya: new ProductKartya(),
+      productId: null,
+    };
+  },
+  mounted() {
+    this.getProductKartyak();
+    this.modal = new bootstrap.Modal(document.getElementById("modalProduct"), {
+      keyboard: false,
+    });
+  },
+  methods: {
+    async getProductKartyak() {
+      const response = await fetch(this.urlProducts);
+      const data = await response.json();
+      this.products = data.data;
+    },
+    async getProductKartya(id) {
+      const urlProducts = `${this.urlProducts}/${id}`;
+      const response = await fetch(urlProducts);
+      const data = await response.json();
+      this.productKartya = data.data[0];
+    },
+    onClickReszletek(id) {
+      this.productId = id;
+      this.getProductKartya(id);
+      this.modal.show();
+    },
+  },
+};
 </script>
 
 <style>
+/* .card{
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 200px;
+  max-height: 300px;
+} */
 
-.btn{
-  color: gold;
-}
-
-.card{
-  overflow: hidden;
-  float: left;
-  background-color: #FBAB7E;
-  background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-  color: black;
+/* h5{
   font-weight: bold;
-  text-align: center;
-  margin: 5px;
 }
 
-.home-container{
-  overflow: hidden;
+ .modal-body {
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+}
+  
+.modal-backdrop {
+    display: none;
+    z-index: 1040 !important;
 }
 
-#lalo{
-  height: 250px;
-  border-radius: 8px;
-}
-
-.bevezetoDiv{
-  max-width: 800px;
-  margin: 10px;
-  float: left;
-}
-
-.elerhetosegDiv{
-  max-width: 500px;
-  margin: 10px;
-  float: right;
-  padding: 10px;
-  text-align: center;
-}
-
-#cim{
-  text-align: center;
-  font-style: oblique;
-  padding-bottom: 50px;
-}
-
+.modal-content {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}  */
 </style>

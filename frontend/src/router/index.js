@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+// import HomeView from "../views/HomeViewOld.vue";
 
 const router = createRouter({
     history: createWebHistory(
@@ -7,7 +7,8 @@ const router = createRouter({
     routes: [{
             path: "/",
             name: "home",
-            component: HomeView,
+            component: () =>
+                import ("../views/HomeView.vue"),
             meta: {
                 requiresAuth: false,
                 title: "Forzathon Shop",
@@ -63,16 +64,16 @@ const router = createRouter({
                 title: "404 / Taxi",
             },
         },
-        {
-            path: "/aruhaz",
-            name: "aruhaz",
-            component: () =>
-                import ("../views/AruhazView.vue"),
-            meta: {
-                requiresAuth: true,
-                title: "Taxi Kezelés / Taxi",
-            },
-        },
+        // {
+        //     path: "/aruhaz",
+        //     name: "aruhaz",
+        //     component: () =>
+        //         import ("../views/AruhazView.vue"),
+        //     meta: {
+        //         requiresAuth: true,
+        //         title: "Taxi Kezelés / Taxi",
+        //     },
+        // },
     ],
 });
 

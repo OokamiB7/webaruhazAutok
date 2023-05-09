@@ -1,27 +1,31 @@
-.my-container {
-    max-width: 1200px;
-    border: 5px ridge gold;
-    backdrop-filter: blur(10px);
-    color: black;
-}
-
-.my-width-100 {
-    width: 100px;
-}
-
-body {
-    background-image: url("imgs/hatter.png");
-}
-
-.Cim {
-    color: white;
-    text-align: center;
-}
-
-.kisCim {
-    color: white;
-}
-
-.szoveg {
-    color: white;
-}
+ .my-container {
+     max-width: 1200px;
+     border: 5px ridge gold;
+     /* backdrop-filter: blur(10px); */
+     color: black;
+ }
+ 
+ .my-bg-card {
+     background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+ }
+ 
+ .my-width-100 {
+     width: 100px;
+ }
+ 
+ body {
+     background-image: url("imgs/hatter.png");
+ }
+ 
+ .Cim {
+     color: white;
+     text-align: center;
+ }
+ 
+ .kisCim {
+     color: white;
+ }
+ 
+ .szoveg {
+     color: white;
+ }
