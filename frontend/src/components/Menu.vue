@@ -38,13 +38,13 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <router-link class="dropdown-item" to="/aruhaz"
-                  >Áruház</router-link
+                <router-link class="dropdown-item" to="/about"
+                  >About</router-link
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <router-link class="dropdown-item" to="/taxiKezeles"
+                <router-link class="dropdown-item" to="/AruKezeles"
                   :class="{ disabled: !storeLogin.loginSuccess }"
                   >Áruk kezelése</router-link
                 >

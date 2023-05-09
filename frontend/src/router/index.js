@@ -25,13 +25,13 @@ const router = createRouter({
             },
         },
         {
-            path: "/taxiKezeles",
-            name: "taxiKezeles",
+            path: "/AruKezeles",
+            name: "AruKezeles",
             component: () =>
-                import ("../views/TaxiKezelesView.vue"),
+                import ("../views/AruKezeles.vue"),
             meta: {
                 requiresAuth: true,
-                title: "Taxi Kezelés / Taxi",
+                title: "Áruk Kezelése",
             },
         },
         {
@@ -62,6 +62,16 @@ const router = createRouter({
             meta: {
                 requiresAuth: false,
                 title: "404 / Taxi",
+            },
+        },
+        {
+            path: "/about",
+            name: "about",
+            component: () =>
+                import ("../views/AboutView.vue"),
+            meta: {
+                requiresAuth: false,
+                title: "Rólunk",
             },
         },
         // {

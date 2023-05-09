@@ -1,6 +1,6 @@
 <template>
   <div class="p-3">
-    <h1 class="Cim">Áruház</h1>
+    <h1 class="Cim">Kínálataink</h1>
 
     <div class="col-md-12 my-border">
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
