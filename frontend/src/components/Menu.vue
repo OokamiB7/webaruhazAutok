@@ -24,6 +24,11 @@
               >Home</router-link
             >
           </li>
+          <li>
+                <router-link class="nav-link active" to="/about"
+                  >Rólunk / GYIK</router-link
+                >
+              </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -34,15 +39,10 @@
               :class="{active: menuState === 4}"
               @click="onClickMenu(4)"
             >
-              Kínálataink
+              Adminisztratív felület
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <router-link class="dropdown-item" to="/about"
-                  >About</router-link
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
+              
               <li>
                 <router-link class="dropdown-item" to="/AruKezeles"
                   :class="{ disabled: !storeLogin.loginSuccess }"
