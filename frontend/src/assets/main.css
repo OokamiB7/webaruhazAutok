@@ -6,12 +6,8 @@
  }
  
  .product-image {
-     max-width: 200px;
+     max-width: 300px;
      max-height: 200px;
-     position: absolute;
-     top: 0px;
-     right: 0px;
-     padding-bottom: 10px;
  }
  
  .my-footer {

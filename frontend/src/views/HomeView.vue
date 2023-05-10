@@ -7,7 +7,7 @@
         <!-- kártya temlate -->
         <div class="col" v-for="(product, index) in products" :key="index">
           <div class="card my-bg-card">
-            <img class="card-img-top"
+            <img class="card-img-top product-image"
              :src="'../../imgs/' + product.productName + '.jpg'"
               alt="Áru képe">
             <div class="card-body">
