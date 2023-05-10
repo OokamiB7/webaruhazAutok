@@ -5,6 +5,15 @@
      color: black;
  }
  
+ .product-image {
+     max-width: 200px;
+     max-height: 200px;
+     position: absolute;
+     top: 0px;
+     right: 0px;
+     padding-bottom: 10px;
+ }
+ 
  .my-bg-card {
      background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
  }

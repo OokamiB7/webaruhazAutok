@@ -1,7 +1,7 @@
 # Feladat leírása
 - Főoldal
     - Kártyák
-        - Keresés (X)
+        - Keresés 
     - Részletek: egy ablakban termék leírása
         - Új mező a leírásra (X)
         - Képek (X)

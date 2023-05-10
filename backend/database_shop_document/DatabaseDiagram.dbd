@@ -59,7 +59,7 @@
             </Location>
             <Size>
               <Width>192 px</Width>
-              <Height>127 px</Height>
+              <Height>144 px</Height>
             </Size>
             <DbOid>
               <Path>carproducts.products</Path>
@@ -82,7 +82,7 @@
             </Location>
             <Size>
               <Width>170 px</Width>
-              <Height>144 px</Height>
+              <Height>161 px</Height>
             </Size>
             <DbOid>
               <Path>carproducts.users</Path>
@@ -142,8 +142,8 @@
               </Port>
               <Port>
                 <Location>
-                  <X>Undefined</X>
-                  <Y>34 px</Y>
+                  <X>0 px</X>
+                  <Y>38.0138888888889 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -160,7 +160,7 @@
               </PointD>
               <PointD>
                 <X>-200 px</X>
-                <Y>-236 px</Y>
+                <Y>-231.986111111111 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>true</IsManuallyRouted>
@@ -180,7 +180,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>-53 px</X>
-                  <Y>66 px</Y>
+                  <Y>63.9930572509766 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -221,8 +221,8 @@
               </Port>
               <Port>
                 <Location>
-                  <X>Undefined</X>
-                  <Y>36 px</Y>
+                  <X>0 px</X>
+                  <Y>40.8188976377953 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -239,7 +239,7 @@
               </PointD>
               <PointD>
                 <X>-200 px</X>
-                <Y>16 px</Y>
+                <Y>20.8188976377953 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>true</IsManuallyRouted>
@@ -259,7 +259,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>-53 px</X>
-                  <Y>-54 px</Y>
+                  <Y>-56.4094505310059 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -324,7 +324,7 @@
               <Port>
                 <Location>
                   <X>161 px</X>
-                  <Y>32 px</Y>
+                  <Y>35.7777777777778 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -349,7 +349,7 @@
               </PointD>
               <PointD>
                 <X>57 px</X>
-                <Y>-238 px</Y>
+                <Y>-234.222222222222 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>

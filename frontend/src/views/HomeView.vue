@@ -8,7 +8,6 @@
         <div class="col" v-for="(product, index) in products" :key="index">
           <div class="card my-bg-card">
             <div class="card-body">
-              <img class="card-img-top" src="../images/BBS Felni.jpg" alt="Áru képe">
               <h5 class="card-title" v-html="product.productName"></h5>
               <p>Ár: {{ product.price }}Ft</p>
               <p>Darab: {{ product.quantity }}</p>
@@ -47,7 +46,7 @@
             ></h1>
           </div>
           <div class="modal-body">
-            <table class="table table-dark">
+            <!-- <table class="table table-dark">
               <thead>
                 <tr>
                   <th>Ár:</th>
@@ -62,13 +61,17 @@
                   <td>{{ productKartya.isInStock }}</td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
 
-            <!-- <img
-                :src="`/public/kepek/${halKartya.KepFile}`"
-                class="card-img-top"
-                alt="..."
-              /> -->
+            <p>Ár: {{ productKartya.price }}Ft</p>
+            <p>Darab: {{ productKartya.quantity }}DB</p>
+            <p>Raktáron: {{ productKartya.isInStock }}DB</p>
+            <p>{{ productKartya.description }}</p>
+
+            <img class="card-img-top product-image" src="../images/Plüss dobókocka.jpg" alt="Áru képe">
+
+
+             
           </div>
           <div class="modal-footer">
             <button
