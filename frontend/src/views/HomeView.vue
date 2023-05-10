@@ -7,6 +7,9 @@
         <!-- kártya temlate -->
         <div class="col" v-for="(product, index) in products" :key="index">
           <div class="card my-bg-card">
+            <img class="card-img-top"
+             :src="'../../imgs/' + product.productName + '.jpg'"
+              alt="Áru képe">
             <div class="card-body">
               <h5 class="card-title" v-html="product.productName"></h5>
               <p>Ár: {{ product.price }}Ft</p>
@@ -68,7 +71,6 @@
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p>
 
-            <img class="card-img-top product-image" src="../images/Katalizátor.jpg" alt="Áru képe">
 
 
              
