@@ -69,7 +69,7 @@
             aria-label="Search"
             v-model="storeKeres.keresoszo"
           />
-          <button class="btn btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+          <button class="btn btn-outline-warning" type="submit"><i class="bi bi-search"></i></button>
         </form>
       </div>
     </div>

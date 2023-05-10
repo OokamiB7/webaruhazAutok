@@ -7,7 +7,11 @@
     <Menu />
     
     <RouterView />
+
+    <p class="my-footer">© Copyright Forzathon Shop™ 2023 Minden jog fentartva.</p>
   </div>
+  
+  
 </template>
 
 <script>

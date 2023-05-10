@@ -14,6 +14,15 @@
      padding-bottom: 10px;
  }
  
+ .my-footer {
+     background-color: rgb(60, 60, 60);
+     color: gold;
+     padding-left: 10px;
+     font-size: 20px;
+     margin: auto;
+     text-align: center;
+ }
+ 
  .my-bg-card {
      background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
  }

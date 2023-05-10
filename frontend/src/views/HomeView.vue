@@ -66,9 +66,9 @@
             <p>Ár: {{ productKartya.price }}Ft</p>
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
-            <p>{{ productKartya.description }}</p>
+            <p>Leírás: {{ productKartya.description }}</p>
 
-            <img class="card-img-top product-image" src="../images/Plüss dobókocka.jpg" alt="Áru képe">
+            <img class="card-img-top product-image" src="../images/Katalizátor.jpg" alt="Áru képe">
 
 
              
@@ -79,7 +79,7 @@
               class="btn btn-primary"
               data-bs-dismiss="modal"
             >
-              Vásárlás
+              Vásárlás <i class="bi bi-cart"></i>
             </button>
 
             <button
