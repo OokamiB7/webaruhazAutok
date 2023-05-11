@@ -1,5 +1,5 @@
 <template>
-  <div class="p-3 my-width-login">
+  <div class="p-3 my-width-login loginBody">
     <!-- user name -->
     <!-- <div class="mb-3">
       <label for="userName" class="form-label szoveg">User name:</label>
@@ -125,6 +125,10 @@ export default {
 </script>
 
 <style>
+
+.loginBody{
+  backdrop-filter: blur(10px);
+}
 /* .my-width-login {
   max-width: 500px;
 } */
