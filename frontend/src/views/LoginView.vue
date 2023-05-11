@@ -1,7 +1,7 @@
 <template>
   <div class="p-3 my-width-login">
     <!-- user name -->
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="userName" class="form-label szoveg">User name:</label>
       <input
         type="text"
@@ -9,9 +9,9 @@
         id="userName"
         v-model="storeLogin.userName"
       />
-    </div>
+    </div> -->
     <!-- password -->
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="password" class="form-label szoveg">Password:</label>
       <input
         type="password"
@@ -19,19 +19,42 @@
         id="password"
         v-model="storeLogin.password"
       />
-    </div>
+    </div> -->
     <!-- Button login -->
-    <button type="button" class="btn btn-primary mb-3" @click="login()">
+    <!-- <button type="button" class="btn btn-primary mb-3" @click="login()">
       Login
     </button>
 
     <div v-if="loginErrorMessage" class="alert alert-danger" role="alert">
       {{ loginErrorMessage }}
+    </div> -->
+
+    <div class="container">
+	<h2 class="title">Bejelentkezés</h2>
+	<form class="form" method="POST">
+
+		<label for="username" class="labelek">Felhasználónév</label>
+
+		<input type="text" id="userName" class="input" placeholder="..." v-model="storeLogin.userName"/>
+
+		<label for="password" class="labelek">Jelszó</label>
+
+		<input type="text" id="password" class="input" placeholder="..." v-model="storeLogin.password"/>
+
+		<button type="button" id="loginButton" @click="login()">Login</button>
+    <div v-if="loginErrorMessage" class="alert alert-danger" role="alert">
+      {{ loginErrorMessage }}
     </div>
+	</form>
+</div>
+
+
+
   </div>
 </template>
 
 <script>
+
 import { useUrlStore } from "@/stores/url";
 const storeUrl = useUrlStore();
 import { useLoginStore } from "@/stores/login";
@@ -95,13 +118,101 @@ export default {
         this.loginErrorMessageShow("Server error 2");
       }
     },
+    
   },
+  
 };
 </script>
 
 <style>
-.my-width-login {
+/* .my-width-login {
   max-width: 500px;
+} */
+
+/* * {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} */
+
+/* body {
+	background: #4d3278;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	font-family: sans-serif;
+} */
+
+.labelek{
+  color: gold;
+}
+
+.container {
+	max-width: 400px;
+	width: 100%;
+  background: linear-gradient(to right, #859398, #283048); 
+	padding: 20px;
+	border-radius: 20px;
+	position: relative;
+}
+
+/* .pic {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	font-size: 24px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 60px;
+	border: 10px solid #4d3278;
+	background: linear-gradient(to right, #9d50bb, #6e48aa);
+	transform: translate(-50%, -50%);
+} */
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	text-align: center;
+	/* margin-top: 30px; */
+  color: gold;
+}
+
+/* label,
+.links,
+button {
+	margin-top: 20px;
+} */
+
+label {
+	margin-top: 20px;
+	font-size: 12px;
+	color: rgb(77, 77, 77);
+	font-weight: 600;
+}
+
+.input {
+	padding: 8px;
+	outline: none;
+	border: 0;
+	background: #EEE;
+}
+
+#loginButton {
+	background: linear-gradient(60deg, #E21143, #FFB03A);
+  margin-top: 20px;
+	padding: 8px;
+	border: 0;
+	color: #fff;
+	font-size: 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
 </style>
