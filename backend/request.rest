@@ -203,11 +203,11 @@ post http://localhost:3000/products
 Content-Type: application/json
 
 {
-    "productName": "BBS Felni",
-    "quantity": 15,
-    "price": 130000,
-    "isInStock": 2,
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+    "productName": "Visszapillantó tükör",
+    "quantity": 40,
+    "price": 8350,
+    "isInStock": 10,
+    "description": "Lampa Középső visszapillantó tükör univerzális 65498"
 }
 
 ### post users
