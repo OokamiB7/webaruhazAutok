@@ -41,11 +41,11 @@ post http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "firstName": "Farkas",
-    "lastName": "Bence",
-    "gender": "férfi",
-    "username": "fbence",
-    "email": "farkas.bence03@gmail.com",
+    "firstName": "Kovács",
+    "lastName": "Eszter",
+    "gender": "nő",
+    "username": "eszti",
+    "email": "k.eszter@gmail.com",
     "password": "123",
     "number": 0
 }

@@ -292,9 +292,11 @@ export default {
       this.modal.show();
     },
     onClickDelete(id) {
-      this.state = "delete";
-      this.deleteProduct(id);
-      this.currentId = null;
+      if (confirm("Valóban törölni akarod?" ) == true) {
+        this.state = "delete";
+        this.deleteProduct(id);
+        this.currentId = null;  
+      }
     },
     onClickEdit(id) {
       this.state = "edit";
