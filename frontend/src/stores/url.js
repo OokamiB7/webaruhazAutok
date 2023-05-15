@@ -42,6 +42,9 @@ export const useUrlStore = defineStore({
         },
         urlTrips() {
             return `${this.urlData}/trips`
-        }
+        },
+        urlLoggedinusers() {
+            return `${this.urlData}/loggedinusers`
+        },
     },
 });

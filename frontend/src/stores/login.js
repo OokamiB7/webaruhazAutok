@@ -14,6 +14,7 @@ export const useLoginStore = defineStore({
     leftTime: null,
     accessTime: 0,
     loginSuccess: 0,
+    shoppingId: null,
     
   }),
   actions: {
@@ -29,6 +30,7 @@ export const useLoginStore = defineStore({
       this.leftTime= null;
       this.accessTime= 0;
       this.loginSuccess = 0;
+      this.shoppingId = null;
     },
     decreaseCount() {
       this.count--;

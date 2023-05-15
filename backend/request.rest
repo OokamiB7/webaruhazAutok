@@ -257,3 +257,25 @@ delete http://localhost:3000/products/7
 
 ###products szur
 get http://localhost:3000/productsSzur/gumi
+
+###post loggedinusers
+post http://localhost:3000/loggedinusers
+Content-Type: application/json
+
+{
+   
+    "userId": 4
+}
+
+###post cart
+post http://localhost:3000/cart
+Content-Type: application/json
+
+{
+    "userId": 5,
+    "productId": 35,
+    "bought": false,
+    "quantity": 1,
+    "price": 1200,
+    "shoppingId": 5
+}

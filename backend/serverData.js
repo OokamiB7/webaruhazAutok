@@ -732,6 +732,70 @@ app.get("/productsSzur/:keres", (req, res) => {
 
 //#endregion
 
+//#region loggedinusers
+app.post("/loggedinusers", (req, res) => {
+    const newR = {
+        userId: req.body.userId
+    };
+    let sql = `
+    insert into loggedinusers
+    (userId)
+    VALUES
+    (?);
+    `;
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(
+            sql, [newR.userId],
+            function(error, result, fields) {
+                sendingPost(res, error, result, newR);
+            }
+        );
+        connection.release();
+    });
+});
+
+
+//#endregion loggedinusers
+
+//#region cart
+app.post("/cart", (req, res) => {
+    const newR = {
+        userId: req.body.userId,
+        productId: req.body.productId,
+        bought: req.body.bought,
+        quantity: req.body.quantity,
+        price: req.body.price,
+        shoppingId: req.body.shoppingId
+        
+    };
+    let sql = `
+    insert into cart
+      (userId,productId,bought,quantity,price,shoppingId)
+      VALUES
+      (?,?,?,?,?,?);
+    `;
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(
+            sql, [newR.userId,newR.productId,newR.bought,newR.quantity,newR.price,newR.shoppingId],
+            function(error, result, fields) {
+                sendingPost(res, error, result, newR);
+            }
+        );
+        connection.release();
+    });
+});
+
+//#endregion cart
+
+
 function mySanitizeHtml(data) {
     return sanitizeHtml(data, {
         allowedTags: [],

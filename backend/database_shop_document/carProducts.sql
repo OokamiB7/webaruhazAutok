@@ -106,3 +106,26 @@ COLLATE utf8_hungarian_ci;
    
     ##delete
     delete from users where id = 4;
+
+
+#select
+    select * from users;
+    select * from loggedinusers;
+    select * from products;
+    select * from cart;
+
+
+    #post loggedinusers
+  insert into loggedinusers
+    (userId)
+    VALUES
+    (4);
+
+
+  #post cart
+    insert into cart
+      (userId,productId,bought,quantity,price,shoppingId)
+      VALUES
+      (5,35,false,1,1200,5);
+
+     

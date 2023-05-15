@@ -106,6 +106,7 @@ export default {
           this.storeLogin.number = data.data.number;
           this.storeLogin.loginSuccess = data.success;
           this.storeLogin.accessTime = parseInt(data.data.accessTime);
+          await this.postLoggedinusers();
           router.push("/");
           // this.timer();
           // this.getTodos();
@@ -118,7 +119,28 @@ export default {
         this.loginErrorMessageShow("Server error 2");
       }
     },
-    
+    async postLoggedinusers(){
+      const loggedinusers = 
+      {userId: this.storeLogin.userId}
+      const url = this.storeUrl.urlLoggedinusers; 
+
+      const config = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loggedinusers),
+      };
+
+      const response = await fetch (url,config)
+      const data = await response.json();
+      this.storeLogin.shoppingId = data.data.id;
+          // console.log("xxx", url, data);
+
+
+
+    }    
   },
   
 };
