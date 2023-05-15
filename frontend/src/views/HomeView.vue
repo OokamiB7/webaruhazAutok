@@ -17,6 +17,14 @@
               <p>Raktáron: {{ product.isInStock }}DB</p>
 
               <button
+              type="button"
+              class="btn btn-success buyButton"
+              data-bs-dismiss="modal"
+            >
+              Vásárlás <i class="bi bi-cart"></i>
+            </button>
+
+              <button
                 type="button"
                 class="btn btn-dark"
                 data-bs-toggle="modal"
@@ -76,13 +84,6 @@
              
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-bs-dismiss="modal"
-            >
-              Vásárlás <i class="bi bi-cart"></i>
-            </button>
 
             <button
               type="button"
@@ -181,6 +182,10 @@ export default {
 </script>
 
 <style>
+
+.buyButton{
+  margin-right: 15px;
+}
 /* .card{
   min-width: 200px;
   max-width: 200px;

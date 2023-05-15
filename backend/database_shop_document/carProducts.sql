@@ -115,6 +115,9 @@ COLLATE utf8_hungarian_ci;
     select * from cart;
 
 
+    delete from cart;
+
+
     #post loggedinusers
   insert into loggedinusers
     (userId)
