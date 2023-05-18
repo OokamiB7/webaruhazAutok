@@ -16,13 +16,7 @@
               <p>Darab: {{ product.quantity }}</p>
               <p>Raktáron: {{ product.isInStock }}DB</p>
 
-              <button
-              type="button"
-              class="btn btn-success buyButton"
-              data-bs-dismiss="modal"
-            >
-              Vásárlás <i class="bi bi-cart"></i>
-            </button>
+           
 
               <button
                 type="button"
@@ -57,33 +51,23 @@
             ></h1>
           </div>
           <div class="modal-body">
-            <!-- <table class="table table-dark">
-              <thead>
-                <tr>
-                  <th>Ár:</th>
-                  <th>Darab</th>
-                  <th>Raktáron</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{{ productKartya.price }}</td>
-                  <td>{{ productKartya.quantity }}</td>
-                  <td>{{ productKartya.isInStock }}</td>
-                </tr>
-              </tbody>
-            </table> -->
-
+      
             <p>Ár: {{ productKartya.price }}Ft</p>
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p>
-
-
-
-             
+           
           </div>
           <div class="modal-footer">
+
+            <button
+              type="button"
+              class="btn btn-success buyButton"
+              data-bs-dismiss="modal"
+              @click="vasarlas()"
+            >
+              Vásárlás <i class="bi bi-cart"></i>
+            </button>
 
             <button
               type="button"
@@ -157,6 +141,10 @@ export default {
       this.productId = id;
       this.getProductKartya(id);
       this.modal.show();
+    },
+    vasarlas(){
+      // this.moda.hide();
+      alert("Sikeres vásárlás!");
     },
     async getProductKartyakSzur() {
       const urlProducts = `${this.urlProductsSzur}/${this.keresoszo}`;
