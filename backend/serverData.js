@@ -770,7 +770,7 @@ app.post("/cart", (req, res) => {
         quantity: req.body.quantity,
         price: req.body.price,
         shoppingId: req.body.shoppingId
-        
+
     };
     let sql = `
     insert into cart
@@ -784,14 +784,37 @@ app.post("/cart", (req, res) => {
             return;
         }
         connection.query(
-            sql, [newR.userId,newR.productId,newR.bought,newR.quantity,newR.price,newR.shoppingId],
+            sql, [newR.userId, newR.productId, newR.bought, newR.quantity, newR.price, newR.shoppingId],
             function(error, result, fields) {
                 sendingPost(res, error, result, newR);
             }
         );
         connection.release();
     });
+
 });
+
+app.get("/cartQuantity/:shoppingId", (req, res) => {
+    console.log("halo");
+    const shoppingId = req.params.shoppingId;
+    let sql = `
+    select count(*) quantity from cart
+    where shoppingId = ?
+    `;
+
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(sql, [shoppingId], function(error, results, fields) {
+            sendingGetById(res, error, results, shoppingId);
+        });
+        connection.release();
+    });
+});
+
+
 
 //#endregion cart
 

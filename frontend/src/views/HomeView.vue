@@ -21,8 +21,6 @@
               <button
                 type="button"
                 class="btn btn-dark"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
                 @click="onClickReszletek(product.id)"
               >
                 Megtekintés
@@ -173,11 +171,26 @@ export default {
       const data = await response.json();
       this.productKartya = data.data[0];
     },
+    async postCart(){
+      let url = this.storeUrl.urlCart;
+      const body = JSON.stringify(this.cart);
+      const config = {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${this.storeLogin.accessToken}`,
+        },
+        body: body,
+      };
+      const response = await fetch(url, config);
+      this.getCartQuantity()
+      this.cart = new Cart();
+    },
     onClickReszletek(id) {
       this.productId = id;
       this.getProductKartya(id);
       this.modal.show();
-      buyCounter = 0;
+      this.buyCounter = 0;
     },
     vasarlas() {
       this.cart.userId = this.storeLogin.userId;
@@ -186,13 +199,22 @@ export default {
       this.cart.quantity = this.buyCounter;
       this.cart.price = this.productKartya.price;
       this.cart.shoppingId = this.storeLogin.shoppingId;
-      console.log(this.cart);
+      this.postCart();
+      this.modal.hide();
+      
     },
     async getProductKartyakSzur() {
       const urlProducts = `${this.storeUrl.urlProductsSzur}/${this.keresoszo}`;
       const response = await fetch(urlProducts);
       const data = await response.json();
       this.products = data.data;
+    },
+    async getCartQuantity(){
+      const url = `${this.storeUrl.urlCartQuantity}/${this.storeLogin.shoppingId}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      this.storeLogin.cartCount = data.data[0].quantity;
+      console.log(data.data[0].quantity);
     },
     keresJelol(text) {
       if (this.keresoszo) {

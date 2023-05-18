@@ -279,3 +279,11 @@ Content-Type: application/json
     "price": 1200,
     "shoppingId": 5
 }
+
+###get cartQuantity by shoppingId
+
+get http://localhost:3000/cartQuantity/25
+
+
+###get cart
+get http://localhost:3000/cart

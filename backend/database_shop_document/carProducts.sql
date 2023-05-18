@@ -131,4 +131,9 @@ COLLATE utf8_hungarian_ci;
       VALUES
       (5,35,false,1,1200,5);
 
+
+    #get cartQuantity
+      select count(*) quantity from cart
+        where shoppingId = 25;
+
      
