@@ -67,6 +67,7 @@
                   id="buyCounter"
                   v-model="buyCounter"
                   :max="productKartya.quantity"
+                  :min="1"
                 />
               </div>
 
