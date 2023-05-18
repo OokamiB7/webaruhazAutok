@@ -7,16 +7,16 @@
         <!-- kártya temlate -->
         <div class="col" v-for="(product, index) in products" :key="index">
           <div class="card my-bg-card">
-            <img class="card-img-top product-image"
-             :src="'../../imgs/' + product.productName + '.jpg'"
-              alt="Áru képe">
+            <img
+              class="card-img-top product-image"
+              :src="'../../imgs/' + product.productName + '.jpg'"
+              alt="Áru képe"
+            />
             <div class="card-body">
               <h5 class="card-title" v-html="product.productName"></h5>
               <p>Ár: {{ product.price }}Ft</p>
               <p>Darab: {{ product.quantity }}</p>
               <p>Raktáron: {{ product.isInStock }}DB</p>
-
-           
 
               <button
                 type="button"
@@ -51,31 +51,45 @@
             ></h1>
           </div>
           <div class="modal-body">
-      
             <p>Ár: {{ productKartya.price }}Ft</p>
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p>
-           
           </div>
+
+
           <div class="modal-footer">
+            <div class="d-flex align-items-center">
+              <div class="form-group d-flex align-items-center" v-if="storeLogin.loginSuccess">
 
-            <button
-              type="button"
-              class="btn btn-success buyButton"
-              data-bs-dismiss="modal"
-              @click="vasarlas()"
-            >
-              Vásárlás <i class="bi bi-cart"></i>
-            </button>
+                <label for="buyCounter" class="m-0 p-0">Darab</label>
+                <input
+                  type="number"
+                  class="form-control ms-3"
+                  id="buyCounter"
+                  v-model="buyCounter"
+                  :max="productKartya.quantity"
+                />
+              </div>
 
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
+              <button
+                type="button"
+                class="btn btn-success buyButton ms-3"
+                data-bs-dismiss="modal"
+                @click="vasarlas()"
+                v-if="storeLogin.loginSuccess"
+              >
+                Vásárlás <i class="bi bi-cart"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary ms-3"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -84,8 +98,21 @@
 </template>
 
 <script>
+class Cart{
+  constructor(){
+    this.userId = null;
+    this.productId = null;
+    this.shoppingDate = null;
+    this.bought = null;
+    this.quantity = null;
+    this.price = null;
+    this.shoppingId = null;
+  }
+}
+
 class ProductKartya {
   constructor() {
+    this.id = null;
     this.productName = null;
     this.quantity = null;
     this.price = null;
@@ -96,12 +123,20 @@ class ProductKartya {
 import { storeToRefs } from "pinia";
 import * as bootstrap from "bootstrap";
 import { useKeresStore } from "@/stores/keres";
+import { useLoginStore } from "@/stores/login";
+import { useUrlStore } from "@/stores/url";
 const storeKeres = useKeresStore();
 const { keresoszo } = storeToRefs(storeKeres);
+const storeLogin = useLoginStore();
+const storeUrl = useUrlStore();
 
 export default {
   data() {
     return {
+      cart: new Cart(),
+      buyCounter: 0,
+      storeLogin,
+      storeUrl,
       products: [],
       urlProducts: "http://localhost:3000/products",
       urlProductsSzur: "http://localhost:3000/productsSzur",
@@ -117,22 +152,23 @@ export default {
     });
   },
   watch: {
-    keresoszo(){
+    keresoszo() {
       if (this.keresoszo.trim()) {
         this.getProductKartyakSzur();
       } else {
         this.getProductKartyak();
       }
-    }
+    },
   },
   methods: {
     async getProductKartyak() {
-      const response = await fetch(this.urlProducts);
+      const url = this.storeUrl.urlProducts;
+      const response = await fetch(url);
       const data = await response.json();
       this.products = data.data;
     },
     async getProductKartya(id) {
-      const urlProducts = `${this.urlProducts}/${id}`;
+      const urlProducts = `${this.storeUrl.urlProducts}/${id}`;
       const response = await fetch(urlProducts);
       const data = await response.json();
       this.productKartya = data.data[0];
@@ -141,13 +177,19 @@ export default {
       this.productId = id;
       this.getProductKartya(id);
       this.modal.show();
+      buyCounter = 0;
     },
-    vasarlas(){
-      // this.moda.hide();
-      alert("Sikeres vásárlás!");
+    vasarlas() {
+      this.cart.userId = this.storeLogin.userId;
+      this.cart.productId = this.productId;
+      this.cart.bought = false;
+      this.cart.quantity = this.buyCounter;
+      this.cart.price = this.productKartya.price;
+      this.cart.shoppingId = this.storeLogin.shoppingId;
+      console.log(this.cart);
     },
     async getProductKartyakSzur() {
-      const urlProducts = `${this.urlProductsSzur}/${this.keresoszo}`;
+      const urlProducts = `${this.storeUrl.urlProductsSzur}/${this.keresoszo}`;
       const response = await fetch(urlProducts);
       const data = await response.json();
       this.products = data.data;
@@ -170,8 +212,7 @@ export default {
 </script>
 
 <style>
-
-.buyButton{
+.buyButton {
   margin-right: 15px;
 }
 /* .card{
