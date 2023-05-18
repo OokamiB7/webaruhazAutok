@@ -78,7 +78,7 @@
             <p
               class="d-flex text-light m-0 align-items-center"
               v-if="storeLogin.loginSuccess"
-              @click="showCart();"
+              @click="showCart(this.shoppingId);"
             >
               <span>{{ storeLogin.cartCount }}</span>
               <span class="text-light my-cart-size me-3 ms-3"
@@ -102,6 +102,72 @@
         </div>
 
 
+        <!-- modal -->
+
+        <div
+      class="modal fade"
+      id="modalCart"
+      tabindex="-1"
+      aria-labelledby="mocalCartLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!-- <h1
+              class="modal-title fs-5"
+              id="modalProduct"
+              v-html="productKartya.productName"
+            ></h1> -->
+            <h1>cart név</h1>
+          </div>
+
+          
+          <div class="modal-body">
+            <!-- <p>Ár: {{ productKartya.price }}Ft</p>
+            <p>Darab: {{ productKartya.quantity }}DB</p>
+            <p>Raktáron: {{ productKartya.isInStock }}DB</p>
+            <p>Leírás: {{ productKartya.description }}</p> -->
+          </div>
+
+
+          <div class="modal-footer">
+            <div class="d-flex align-items-center">
+              <div class="form-group d-flex align-items-center" v-if="storeLogin.loginSuccess">
+
+                <!-- <label for="buyCounter" class="m-0 p-0">Darab</label>
+                <input
+                  type="number"
+                  class="form-control ms-3"
+                  id="buyCounter"
+                  v-model="buyCounter"
+                  :max="productKartya.quantity"
+                  :min="1"
+                /> -->
+              </div>
+
+              <!-- <button
+                type="button"
+                class="btn btn-success buyButton ms-3"
+                data-bs-dismiss="modal"
+                @click="vasarlas()"
+                v-if="storeLogin.loginSuccess"
+              >
+                Vásárlás <i class="bi bi-cart"></i>
+              </button> -->
+
+              <button
+                type="button"
+                class="btn btn-secondary ms-3"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
        
@@ -117,6 +183,18 @@ import { useKeresStore } from "@/stores/keres";
 const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
+
+class Cart{
+  constructor(){
+    this.userId = null;
+    this.productId = null;
+    this.shoppingDate = null;
+    this.bought = null;
+    this.quantity = null;
+    this.price = null;
+    this.shoppingId = null;
+  }
+}
 
 const msg = "helo";
 let menuState = null;
@@ -139,7 +217,8 @@ async function logout() {
 }
 
 function showCart(){
-  alert("geci")
+  this.shoppingId = this.shoppingId;
+  this.modal.show();
 }
 
 function onClickMenu(number) {

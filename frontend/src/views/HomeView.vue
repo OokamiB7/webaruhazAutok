@@ -48,6 +48,8 @@
               v-html="productKartya.productName"
             ></h1>
           </div>
+
+          
           <div class="modal-body">
             <p>Ár: {{ productKartya.price }}Ft</p>
             <p>Darab: {{ productKartya.quantity }}DB</p>
