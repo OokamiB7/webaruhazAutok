@@ -71,14 +71,12 @@
             </li>
           </ul>
 
-
           <form class="d-flex align-items-center" role="search">
-
-            <!-- cart ikon -->
+            <!-- start cart ikon -->
             <p
               class="d-flex text-light m-0 align-items-center"
               v-if="storeLogin.loginSuccess"
-              @click="showCart(this.shoppingId);"
+              @click="showCart()"
             >
               <span>{{ storeLogin.cartCount }}</span>
               <span class="text-light my-cart-size me-3 ms-3"
@@ -86,7 +84,7 @@
               ></span>
             </p>
 
-            <!-- cart ikon -->
+            <!-- end cart ikon -->
 
             <input
               class="form-control me-2"
@@ -100,11 +98,12 @@
             </button>
           </form>
         </div>
+      </div>
+    </nav>
 
+    <!-- modal -->
 
-        <!-- modal -->
-
-        <div
+    <div
       class="modal fade"
       id="modalCart"
       tabindex="-1"
@@ -122,19 +121,20 @@
             <h1>cart név</h1>
           </div>
 
-          
           <div class="modal-body">
             <!-- <p>Ár: {{ productKartya.price }}Ft</p>
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p> -->
+            <p>modal body</p>
           </div>
-
 
           <div class="modal-footer">
             <div class="d-flex align-items-center">
-              <div class="form-group d-flex align-items-center" v-if="storeLogin.loginSuccess">
-
+              <div
+                class="form-group d-flex align-items-center"
+                v-if="storeLogin.loginSuccess"
+              >
                 <!-- <label for="buyCounter" class="m-0 p-0">Darab</label>
                 <input
                   type="number"
@@ -168,24 +168,26 @@
         </div>
       </div>
     </div>
-
-
-       
-      </div>
-    </nav>
   </div>
 </template>
 
 <script setup>
+import * as bootstrap from "bootstrap";
 import { useUrlStore } from "@/stores/url";
 import { useLoginStore } from "@/stores/login";
 import { useKeresStore } from "@/stores/keres";
 const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
+let modal = null;
+addEventListener("load", (event) => {
+  modal = new bootstrap.Modal(document.getElementById("modalCart"), {
+    keyboard: false,
+  });
+});
 
-class Cart{
-  constructor(){
+class Cart {
+  constructor() {
     this.userId = null;
     this.productId = null;
     this.shoppingDate = null;
@@ -216,9 +218,11 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
-function showCart(){
-  this.shoppingId = this.shoppingId;
-  this.modal.show();
+function showCart() {
+  if (storeLogin.cartCount != 0) {
+    modal.show();
+  }
+  
 }
 
 function onClickMenu(number) {
@@ -239,7 +243,7 @@ function onClickMenu(number) {
   font-size: 1.5rem;
 }
 
-.my-cart-size:hover{
+.my-cart-size:hover {
   cursor: pointer;
 }
 /* .router-link-active {

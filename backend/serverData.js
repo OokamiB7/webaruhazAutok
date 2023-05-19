@@ -815,6 +815,26 @@ app.get("/cartQuantity/:shoppingId", (req, res) => {
 });
 
 
+app.get("/cartByShoppingId/:shoppingId", (req, res) => {
+    const shoppingId = req.params.shoppingId;
+    let sql = `
+    select c.id, p.productName,c.quantity, c.price unitPrice, c.quantity*c.price price  from cart c
+        inner join products p on p.id = c.productId
+      where c.shoppingId = ?
+    `;
+
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(sql, [shoppingId], function(error, results, fields) {
+            sendingGetById(res, error, results, shoppingId);
+        });
+        connection.release();
+    });
+});
+
 
 //#endregion cart
 
