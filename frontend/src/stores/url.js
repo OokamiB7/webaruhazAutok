@@ -55,5 +55,8 @@ export const useUrlStore = defineStore({
         urlCartQuantity() {
             return `${this.urlData}/cartQuantity`
         },
+        urlCartByShoppingId() {
+            return `${this.urlData}/cartByShoppingId`
+        },
     },
 });

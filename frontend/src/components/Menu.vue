@@ -118,7 +118,7 @@
               id="modalProduct"
               v-html="productKartya.productName"
             ></h1> -->
-            <h1>cart név</h1>
+            <h1>Rendelés</h1>
           </div>
 
           <div class="modal-body">
@@ -126,7 +126,41 @@
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p> -->
-            <p>modal body</p>
+            <table
+              class="table table-striped table-dark table-bordered w-auto szoveg"
+            >
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Név</th>
+                  <th>Egységár</th>
+                  <th>Ár</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(product, index) in products"
+                  :key="`product${index}`"
+                  :class="currentRowBackground(product.id)"
+                  @click="onClikRow(product.id)"
+                >
+                  <td class="text-nowrap">
+                    <!-- törlés -->
+                    <!-- <button
+                      type="button"
+                      class="btn btn-outline-danger btn-sm"
+                      @click="onClickDelete(product.id)"
+                    >
+                      <i class="bi bi-trash3-fill"></i>
+                    </button> -->
+                  </td>
+                  <td>{{ cart.id }}</td>
+                  <td>{{ cart.productName }}</td>
+                  <td>{{ cart.unitPrice }}</td>
+                  <td>{{ cart.price }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
           <div class="modal-footer">
@@ -146,15 +180,13 @@
                 /> -->
               </div>
 
-              <!-- <button
+              <button
                 type="button"
                 class="btn btn-success buyButton ms-3"
                 data-bs-dismiss="modal"
-                @click="vasarlas()"
-                v-if="storeLogin.loginSuccess"
               >
-                Vásárlás <i class="bi bi-cart"></i>
-              </button> -->
+                Rendelés
+              </button>
 
               <button
                 type="button"
@@ -198,6 +230,7 @@ class Cart {
   }
 }
 
+let cartKartya = new Cart();
 const msg = "helo";
 let menuState = null;
 async function logout() {
@@ -218,11 +251,19 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
+async function getProductKartya(shoppingId) {
+      const urlCartByShoppingId = `${this.storeUrl.urlCartByShoppingId}/${id}`;
+      const response = await fetch(urlCartByShoppingId);
+      const data = await response.json();
+      this.cartKartya = data.data[0];
+    }
+
 function showCart() {
   if (storeLogin.cartCount != 0) {
     modal.show();
+    getCartbyId(shoppingId);
+    getProductKartya(shoppingId);
   }
-  
 }
 
 function onClickMenu(number) {
