@@ -136,4 +136,11 @@ COLLATE utf8_hungarian_ci;
       select count(*) quantity from cart
         where shoppingId = 25;
 
+
+      #cartbyShoppingId
+
+      select c.id, p.productName,c.quantity, c.price unitPrice, c.quantity*c.price price  from cart c
+        inner join products p on p.id = c.productId
+      where c.shoppingId = 25;
+
      
