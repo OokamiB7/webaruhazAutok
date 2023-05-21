@@ -151,24 +151,7 @@ export default {
 .loginBody{
   backdrop-filter: blur(10px);
 }
-/* .my-width-login {
-  max-width: 500px;
-} */
 
-/* * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-} */
-
-/* body {
-	background: #4d3278;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100vh;
-	font-family: sans-serif;
-} */
 
 .labelek{
   color: gold;
@@ -183,21 +166,7 @@ export default {
 	position: relative;
 }
 
-/* .pic {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	font-size: 24px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 60px;
-	border: 10px solid #4d3278;
-	background: linear-gradient(to right, #9d50bb, #6e48aa);
-	transform: translate(-50%, -50%);
-} */
+
 
 .form {
 	display: flex;
@@ -206,15 +175,11 @@ export default {
 
 .title {
 	text-align: center;
-	/* margin-top: 30px; */
+
   color: gold;
 }
 
-/* label,
-.links,
-button {
-	margin-top: 20px;
-} */
+
 
 label {
 	margin-top: 20px;
