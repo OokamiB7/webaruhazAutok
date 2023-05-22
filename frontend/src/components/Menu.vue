@@ -119,6 +119,7 @@
           <div class="modal-body">
             <table class="table table-striped table-dark table-bordered w-auto">
               <thead>
+                <p class="feketeszoveg">{{ products }}</p>
                 <tr>
                   <th>Műveletek</th>
                   <th>Név</th>
@@ -132,12 +133,12 @@
                   v-for="(product, index) in products"
                   :key="`product${index}`"
                 >
-                  <td class="text-nowrap">
-                    <!-- törlés -->
+                   <td class="text-nowrap">
+                     <!-- törlés -->
                     <button type="button" class="btn btn-outline-danger btn-sm">
                       <i class="bi bi-trash3-fill"></i>
                     </button>
-                  </td>
+                  </td> 
                   <td>{{ product.productName }}</td>
                   <td>{{ product.quantity }}</td>
                   <td>{{ product.unitPrice }}</td>
@@ -243,7 +244,7 @@ async function getCartProducts() {
   }
 }
 
-function onClickDelete(id) {}
+
 
 async function showCart() {
   if (storeLogin.cartCount != 0) {
@@ -261,14 +262,7 @@ async function showCart() {
 function onClickMenu(number) {
   this.menuState = number;
 }
-// export default {
-//   data() {
-//     return {
-//       storeUrl,
-//       storeLogin
-//     }
-//   }
-// };
+
 </script>
 
 <style>
@@ -279,10 +273,5 @@ function onClickMenu(number) {
 .my-cart-size:hover {
   cursor: pointer;
 }
-/* .router-link-active {
-  color: white !important
-}
 
-.navbar-nav > li > .dropdown-menu a:link,
-.navbar-nav > li > .dropdown-menu a:hover { background-color: black} */
 </style>
