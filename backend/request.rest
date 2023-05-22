@@ -289,5 +289,5 @@ get http://localhost:3000/cartQuantity/25
 get http://localhost:3000/cart
 
 ###get cart by shoppingId
-get http://localhost:3000/cartByShoppingId/25
+get http://localhost:3000/cartByShoppingId/39
 

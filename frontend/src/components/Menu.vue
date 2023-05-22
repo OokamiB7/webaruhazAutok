@@ -126,13 +126,15 @@
             <p>Darab: {{ productKartya.quantity }}DB</p>
             <p>Raktáron: {{ productKartya.isInStock }}DB</p>
             <p>Leírás: {{ productKartya.description }}</p> -->
+            <p>{{ products }}</p>
             <table
               class="table table-striped table-dark table-bordered w-auto szoveg"
             >
               <thead>
                 <tr>
-                  <th>id</th>
+                  <th>Műveletek</th>
                   <th>Név</th>
+                  <th>Mennyiség</th>
                   <th>Egységár</th>
                   <th>Ár</th>
                 </tr>
@@ -141,23 +143,23 @@
                 <tr
                   v-for="(product, index) in products"
                   :key="`product${index}`"
-                  :class="currentRowBackground(product.id)"
-                  @click="onClikRow(product.id)"
+                  
+                  
                 >
                   <td class="text-nowrap">
                     <!-- törlés -->
-                    <!-- <button
+                     <button
                       type="button"
                       class="btn btn-outline-danger btn-sm"
-                      @click="onClickDelete(product.id)"
+                      @click="onClickDelete(product.id)" 
                     >
                       <i class="bi bi-trash3-fill"></i>
-                    </button> -->
+                    </button> 
                   </td>
-                  <td>{{ cart.id }}</td>
-                  <td>{{ cart.productName }}</td>
-                  <td>{{ cart.unitPrice }}</td>
-                  <td>{{ cart.price }}</td>
+                  <td>{{ product.productName }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.unitPrice }}</td>
+                  <td>{{ product.price }}</td>
                 </tr>
               </tbody>
             </table>
@@ -212,11 +214,26 @@ const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
 let modal = null;
+let products = [];
+
 addEventListener("load", (event) => {
   modal = new bootstrap.Modal(document.getElementById("modalCart"), {
     keyboard: false,
+
   });
+  // products = [
+  // {
+  //     id: 26,
+  //     productName: "Akkumulátor",
+  //     quantity: 1,
+  //     unitPrice: 23760,
+  //     price: 23760
+  //   }
+  // ]
+
 });
+
+
 
 class Cart {
   constructor() {
@@ -251,18 +268,33 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
-async function getProductKartya(shoppingId) {
-      const urlCartByShoppingId = `${this.storeUrl.urlCartByShoppingId}/${id}`;
-      const response = await fetch(urlCartByShoppingId);
+async function getCartProducts(){
+  const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
+      const response = await fetch(url);
       const data = await response.json();
-      this.cartKartya = data.data[0];
-    }
+      if (!products.length) {
+        products = data.data;
+        console.log(products);
+        
+      }
+}
 
-function showCart() {
+function onClickDelete(id){
+ 
+}
+
+async function showCart() {
   if (storeLogin.cartCount != 0) {
-    modal.show();
-    getCartbyId(shoppingId);
-    getProductKartya(shoppingId);
+    getCartProducts();
+    const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    
+      products = data.data;
+      console.log(products);
+      modal.show();
+      
+    
   }
 }
 
