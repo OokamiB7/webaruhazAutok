@@ -113,23 +113,11 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <!-- <h1
-              class="modal-title fs-5"
-              id="modalProduct"
-              v-html="productKartya.productName"
-            ></h1> -->
             <h1>Rendelés</h1>
           </div>
 
           <div class="modal-body">
-            <!-- <p>Ár: {{ productKartya.price }}Ft</p>
-            <p>Darab: {{ productKartya.quantity }}DB</p>
-            <p>Raktáron: {{ productKartya.isInStock }}DB</p>
-            <p>Leírás: {{ productKartya.description }}</p> -->
-            <p>{{ products }}</p>
-            <table
-              class="table table-striped table-dark table-bordered w-auto szoveg"
-            >
+            <table class="table table-striped table-dark table-bordered w-auto">
               <thead>
                 <tr>
                   <th>Műveletek</th>
@@ -143,18 +131,12 @@
                 <tr
                   v-for="(product, index) in products"
                   :key="`product${index}`"
-                  
-                  
                 >
                   <td class="text-nowrap">
                     <!-- törlés -->
-                     <button
-                      type="button"
-                      class="btn btn-outline-danger btn-sm"
-                      @click="onClickDelete(product.id)" 
-                    >
+                    <button type="button" class="btn btn-outline-danger btn-sm">
                       <i class="bi bi-trash3-fill"></i>
-                    </button> 
+                    </button>
                   </td>
                   <td>{{ product.productName }}</td>
                   <td>{{ product.quantity }}</td>
@@ -167,20 +149,7 @@
 
           <div class="modal-footer">
             <div class="d-flex align-items-center">
-              <div
-                class="form-group d-flex align-items-center"
-                v-if="storeLogin.loginSuccess"
-              >
-                <!-- <label for="buyCounter" class="m-0 p-0">Darab</label>
-                <input
-                  type="number"
-                  class="form-control ms-3"
-                  id="buyCounter"
-                  v-model="buyCounter"
-                  :max="productKartya.quantity"
-                  :min="1"
-                /> -->
-              </div>
+              <div class="form-group d-flex align-items-center"></div>
 
               <button
                 type="button"
@@ -219,7 +188,6 @@ let products = [];
 addEventListener("load", (event) => {
   modal = new bootstrap.Modal(document.getElementById("modalCart"), {
     keyboard: false,
-
   });
   // products = [
   // {
@@ -230,10 +198,7 @@ addEventListener("load", (event) => {
   //     price: 23760
   //   }
   // ]
-
 });
-
-
 
 class Cart {
   constructor() {
@@ -268,20 +233,17 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
-async function getCartProducts(){
+async function getCartProducts() {
   const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      if (!products.length) {
-        products = data.data;
-        console.log(products);
-        
-      }
+  const response = await fetch(url);
+  const data = await response.json();
+  if (!products.length) {
+    products = data.data;
+    console.log(products);
+  }
 }
 
-function onClickDelete(id){
- 
-}
+function onClickDelete(id) {}
 
 async function showCart() {
   if (storeLogin.cartCount != 0) {
@@ -289,12 +251,10 @@ async function showCart() {
     const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
     const response = await fetch(url);
     const data = await response.json();
-    
-      products = data.data;
-      console.log(products);
-      modal.show();
-      
-    
+
+    products = data.data;
+    console.log(products);
+    modal.show();
   }
 }
 
