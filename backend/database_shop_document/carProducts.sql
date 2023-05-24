@@ -143,4 +143,11 @@ COLLATE utf8_hungarian_ci;
         inner join products p on p.id = c.productId
       where c.shoppingId = 25;
 
+
+      #cartbyShoppingId
+        delete * from cart
+          where id = 98;
+
+
+
      

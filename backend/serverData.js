@@ -835,6 +835,25 @@ app.get("/cartByShoppingId/:shoppingId", (req, res) => {
     });
 });
 
+app.delete("/cart/:id", (req, res) => {
+    const id = req.params.id;
+
+    let sql = `
+    delete from cart
+          where id = ?`;
+
+    pool.getConnection(function(error, connection) {
+        if (error) {
+            sendingGetError(res, "Server connecting error!");
+            return;
+        }
+        connection.query(sql, [id], function(error, result, fields) {
+            sendingDelete(res, error, result, id);
+        });
+        connection.release();
+    });
+});
+
 
 //#endregion cart
 

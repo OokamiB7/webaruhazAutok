@@ -291,3 +291,6 @@ get http://localhost:3000/cart
 ###get cart by shoppingId
 get http://localhost:3000/cartByShoppingId/39
 
+### delete cart
+delete http://localhost:3000/cart/97
+

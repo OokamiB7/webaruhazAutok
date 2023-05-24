@@ -119,7 +119,6 @@
           <div class="modal-body">
             <table class="table table-striped table-dark table-bordered w-auto">
               <thead>
-                
                 <tr>
                   <th>Műveletek</th>
                   <th>Név</th>
@@ -133,12 +132,16 @@
                   v-for="(product, index) in products"
                   :key="`product${index}`"
                 >
-                   <td class="text-nowrap">
-                     <!-- törlés -->
-                    <button type="button" class="btn btn-outline-danger btn-sm">
+                  <td class="text-nowrap">
+                    <!-- törlés -->
+                    <button
+                      type="button"
+                      class="btn btn-outline-danger btn-sm"
+                      @click="onClickDelete(product.id)"
+                    >
                       <i class="bi bi-trash3-fill"></i>
                     </button>
-                  </td> 
+                  </td>
                   <td>{{ product.productName }}</td>
                   <td>{{ product.quantity }}</td>
                   <td>{{ product.unitPrice }}</td>
@@ -180,7 +183,7 @@ import * as bootstrap from "bootstrap";
 import { useUrlStore } from "@/stores/url";
 import { useLoginStore } from "@/stores/login";
 import { useKeresStore } from "@/stores/keres";
-import { ref } from 'vue';
+import { ref } from "vue";
 const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
@@ -239,15 +242,31 @@ async function getCartProducts() {
   const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
   const response = await fetch(url);
   const data = await response.json();
-  
-    products.value = data.data;
-    console.log(products.value);
-  
+
+  products.value = data.data;
+  console.log(products.value);
 }
 
+function onClickDelete(id){
+  if (confirm("Valóban törölni akarod?" ) == true) {
+        deleteProductInCart(id); 
+      }
+}
 
+async function deleteProductInCart(id){
+  let url = `${storeUrl.urlCart}/${id}`;
+      const config = {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${storeLogin.accessToken}`,
+        },
+      };
+      const response = await fetch(url, config);
+      getCartProducts();
+}
 
- function showCart() {
+function showCart() {
   if (storeLogin.cartCount != 0) {
     getCartProducts();
     // const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
@@ -261,9 +280,8 @@ async function getCartProducts() {
 }
 
 function onClickMenu(number) {
-  this.menuState = number;
+  menuState = number;
 }
-
 </script>
 
 <style>
@@ -274,5 +292,4 @@ function onClickMenu(number) {
 .my-cart-size:hover {
   cursor: pointer;
 }
-
 </style>
