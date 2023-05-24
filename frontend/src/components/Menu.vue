@@ -119,7 +119,7 @@
           <div class="modal-body">
             <table class="table table-striped table-dark table-bordered w-auto">
               <thead>
-                <p class="feketeszoveg">{{ products }}</p>
+                
                 <tr>
                   <th>Műveletek</th>
                   <th>Név</th>
@@ -180,11 +180,12 @@ import * as bootstrap from "bootstrap";
 import { useUrlStore } from "@/stores/url";
 import { useLoginStore } from "@/stores/login";
 import { useKeresStore } from "@/stores/keres";
+import { ref } from 'vue';
 const storeKeres = useKeresStore();
 const storeUrl = useUrlStore();
 const storeLogin = useLoginStore();
 let modal = null;
-let products = [];
+let products = ref([]);
 
 addEventListener("load", (event) => {
   modal = new bootstrap.Modal(document.getElementById("modalCart"), {
@@ -238,23 +239,23 @@ async function getCartProducts() {
   const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
   const response = await fetch(url);
   const data = await response.json();
-  if (!products.length) {
-    products = data.data;
-    console.log(products);
-  }
+  
+    products.value = data.data;
+    console.log(products.value);
+  
 }
 
 
 
-async function showCart() {
+ function showCart() {
   if (storeLogin.cartCount != 0) {
     getCartProducts();
-    const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
-    const response = await fetch(url);
-    const data = await response.json();
+    // const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
+    // const response = await fetch(url);
+    // const data = await response.json();
 
-    products = data.data;
-    console.log(products);
+    // products = data.data;
+    // console.log(products);
     modal.show();
   }
 }
