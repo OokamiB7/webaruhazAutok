@@ -145,7 +145,7 @@ COLLATE utf8_hungarian_ci;
 
 
       #cartbyShoppingId
-        delete * from cart
+        delete from cart
           where id = 98;
 
 
