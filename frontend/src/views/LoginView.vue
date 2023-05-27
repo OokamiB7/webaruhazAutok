@@ -39,7 +39,7 @@
 
 		<label for="password" class="labelek">Jelszó</label>
 
-		<input type="text" id="password" class="input" placeholder="..." v-model="storeLogin.password"/>
+		<input type="password" id="password" class="input" placeholder="..." v-model="storeLogin.password"/>
 
 		<button type="button" id="loginButton" @click="login()">Login</button>
     <div v-if="loginErrorMessage" class="alert alert-danger" role="alert">
