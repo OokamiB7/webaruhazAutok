@@ -74,6 +74,26 @@ const router = createRouter({
                 title: "Rólunk",
             },
         },
+        {
+            path: "/rendeles",
+            name: "rendeles",
+            component: () =>
+                import ("../views/RendelesView.vue"),
+            meta: {
+                requiresAuth: false,
+                title: "Rendelés",
+            },
+        },
+        {
+            path: "/sikeresRendeles",
+            name: "sikeresRendeles",
+            component: () =>
+                import ("../views/SikeresRendeles.vue"),
+            meta: {
+                requiresAuth: false,
+                title: "Köszönjük!",
+            },
+        },
         // {
         //     path: "/aruhaz",
         //     name: "aruhaz",

@@ -155,13 +155,17 @@
             <div class="d-flex align-items-center">
               <div class="form-group d-flex align-items-center"></div>
 
-              <button
-                type="button"
-                class="btn btn-success buyButton ms-3"
-                data-bs-dismiss="modal"
-              >
-                Rendelés
-              </button>
+
+               <router-link to="rendeles">
+                 <button
+                   type="button"
+                   class="btn btn-success buyButton ms-3"
+                   data-bs-dismiss="modal"
+                 >
+                   Rendelés
+                 </button>
+
+               </router-link>
 
               <button
                 type="button"
