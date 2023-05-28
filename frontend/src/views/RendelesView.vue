@@ -56,7 +56,7 @@
                 <button type="button" class="btn btn-danger m-2">Vissza</button>
             </router-link>
             <router-link to="sikeresRendeles">
-                <button type="button" class="btn btn-success">Megrendelem</button>
+              <button type="button" class="btn btn-success">Megrendelem</button>
             </router-link>
         </div>
     

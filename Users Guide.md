@@ -42,3 +42,11 @@ Kosárba rakás után rátudunk kattintani a keresés melletti kosár ikonra ami
 ![Kosar](markdownKepek/Rendeles.png)
 
     Ha meggondoltuk magunkat, a kuka ikon kattintásával a kosárból kitudjuk szedni a nemkívánt árukat.
+
+Miután a rendelés gombra kattintottunk, a rendelés view megjelenik
+
+![RendelesView](markdownKepek/RendelesView.png)
+
+A vissza gomb a főoldalra visz minket vissza. Ha beírtuk az adatokat a kötelező helyekre, akkor a rendelés sikeres lesz és ez fogad majd minket
+
+![SikeresRendeles](markdownKepek/SikeresRendeles.png)
