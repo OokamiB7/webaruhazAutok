@@ -56,7 +56,7 @@
                 <button type="button" class="btn btn-danger m-2">Vissza</button>
             </router-link>
             <router-link to="sikeresRendeles">
-              <button type="button" class="btn btn-success">Megrendelem</button>
+              <button type="button" class="btn btn-success" @click="cartKiurul()">Megrendelem</button>
             </router-link>
         </div>
     
@@ -66,9 +66,33 @@
 </template>
 
 <script>
-export default {};
 import * as bootstrap from "bootstrap";
 import { useUrlStore } from "@/stores/url";
+import { useLoginStore } from "@/stores/login";
+import { useKeresStore } from "@/stores/keres";
+import { ref } from "vue";
+const storeKeres = useKeresStore();
+const storeUrl = useUrlStore();
+const storeLogin = useLoginStore();
+
+export default {
+  data(){
+    return {
+      storeLogin
+    };
+  },
+  mounted() {
+    
+
+  },
+  methods: {
+     cartKiurul(){
+      storeLogin.cartCount = 0;
+    }
+  }
+}
+
+
 </script>
 
 <style>

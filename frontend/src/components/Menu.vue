@@ -79,6 +79,8 @@
               @click="showCart()"
             >
               <span>{{ storeLogin.cartCount }}</span>
+
+
               <span class="text-light my-cart-size me-3 ms-3"
                 ><i class="bi bi-cart2"></i
               ></span>
@@ -93,9 +95,7 @@
               aria-label="Search"
               v-model="storeKeres.keresoszo"
             />
-            <button class="btn btn-outline-warning" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
+            
           </form>
         </div>
       </div>
@@ -161,6 +161,7 @@
                    type="button"
                    class="btn btn-success buyButton ms-3"
                    data-bs-dismiss="modal"
+                   
                  >
                    Rendelés
                  </button>
@@ -171,6 +172,7 @@
                 type="button"
                 class="btn btn-secondary ms-3"
                 data-bs-dismiss="modal"
+                
               >
                 Close
               </button>
@@ -242,6 +244,7 @@ async function logout() {
   storeLogin.clearLogin();
 }
 
+
 async function getCartProducts() {
   const url = `${storeUrl.urlCartByShoppingId}/${storeLogin.shoppingId}`;
   const response = await fetch(url);
@@ -268,6 +271,7 @@ async function deleteProductInCart(id){
       };
       const response = await fetch(url, config);
       getCartProducts();
+      storeLogin.cartCount = storeLogin.cartCount - 1;
 }
 
 function showCart() {
